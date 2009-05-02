@@ -113,8 +113,8 @@ demandes de manifestation, etc.).</p>
   <a href="http://fr.wikipedia.org/wiki/Pierre-la-Treiche">Pierre-la-Treiche</a>,
   <a href="http://fr.wikipedia.org/wiki/Lay-Saint-Remy">Lay-Saint-Remy</a>,
   <a href="http://fr.wikipedia.org/wiki/Foug">Foug</a> et
-  <a href="http://fr.wikipedia.org/wiki/Velaine-en-Haye">Velaine-en-Haye</a>.
-  </p>
+  <a href="http://fr.wikipedia.org/wiki/Velaine-en-Haye">Velaine-en-Haye</a>.</li>
+</ul>
 
 <?php
 

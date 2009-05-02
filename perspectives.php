@@ -33,6 +33,8 @@ conditions de vie aux enfants de ces oasis.
 En Mauritanie, Mohamed Ould Barka, président de l'association <em>Waha
 Medrassa</em> et de l'association <em>Taawniya désert</em> conçoit, organise et conduit le
 projet. <em>Taawniya désert</em> devra ensuite être en capacité :
+</p>
+
 <ul>
   <li>d'assumer les frais de fonctionnement (location du terrain, salaire du
 gérant, achats de nourriture et de produits sanitaires, renouvellement du stock
@@ -41,7 +43,6 @@ de poules)</li>
     projet.
 </li>
 </ul>
-</p>
 
 <div class="image-gauche">
   <img src="chinguetti2.jpg" alt="Chinguetti"/>
