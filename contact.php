@@ -15,7 +15,8 @@ include("header.inc.php");
 <ul>
   <li>Rolande Bernat, présidente de <em>Une oasis, une
   école</em>,</li>
-  <li>Mohamed Ould Barka, président de <em>Waha Medrassa</em>,</li>
+  <li>Mohamed Ould Barka, président de <em>Waha Medrassa</em> et
+  de <em>Taawniya désert</em>,</li>
   <li>Marie José Nicolau, conseil d'administration de <em>Une oasis, une
   école</em>.</li>
 </ul>
@@ -33,7 +34,11 @@ Tel: 03.83.23.24.26<br />
 CCP: NCY 7 837 47 B
 </address>
 
-<div class="image-droite">
+<div class="image-centre">
+  <img src="panneau.jpg" alt="Panneau de l'association sur place"/>
+</div>
+
+<div class="image-gauche">
   <img src="classe2.jpg" alt="Les élèves de l'école"/>
 </div>
 

@@ -55,31 +55,6 @@ est construite et la matériel scolaire est acheté (1500 €).
   <img src="courir.jpg" alt="Une classe du Toulois"/>
 </div>
 
-<h1>Opération « Courir pour eux »</h1>
-
-<p>Samedi 20 octobre 2007 a eu lieu la manifestation <em>Courir pour
-eux</em>, organisée par les enseignants du Toulois et l'Inspection
-Primaire de l'Éducation Nationale.</p>
-
-<p>Les organisateurs choisissent chaque année, sur présentation d'un
-projet, une association locale.  Cette année notre association <em>Une
-oasis, une école</em> a été retenue.</p>
-
-<p>3635 élèves appartenant à 48 écoles de la circonscription scolaire
-ont couru et récolté des fonds. Au cours de mini-conférences, nous
-avons fait découvrir le désert mauritanien, ses peuples nomades et
-leur mode de vie aux écoliers impliqués dans cette action solidaire.
-</p>
-
-<p>L'Est Républicain et Radio Déclic ont couvert l'événement.  Une
-partie des fonds récoltés nous sera remise nous permettant de
-poursuivre la réalisation de notre projet.
-</p>
-
-<div class="image-droite">
-  <img src="classe.jpg" alt="Les élèves en classe"/>
-</div>
-
 <h1>Inauguration de l'école</h1>
 
 <p>Le 12 mars 2008, notre association, représentée par Rolande Bernat,
@@ -191,6 +166,56 @@ poursuivre la réalisation de notre projet.
   projets, des sources de financement ont été avancés.
 </p>
 
+<div class="image-gauche">
+  <img src="case.jpg" alt="En fond, la case de l'instituteur"/>
+</div>
+
+<h1>Août 2008 : construction de la case de l'instituteur</h1>
+
+<p>La case de l'instituteur, éclairée
+  par <a href="http://fr.wikipedia.org/wiki/Panneau_solaire">panneaux
+  solaires</a>, sert également de salle d'étude.</p>
+
+<div class="image-droite">
+  <img src="puits.jpg" alt="Le puits avec sa pompe"/>
+</div>
+
+<h1>Juin - septembre 2008 : construction du puits et réalisation du
+  jardin</h1>
+
+<ul>
+ <li>construction d'un nouveau puits avec réserve d'eau, installation
+    d'une pompe alimentée par panneaux solaire
+    et <a href="http://fr.wikipedia.org/wiki/Adduction_d'eau">adduction
+    d'eau</a> jusqu'à l'école</li>
+ <li>réalisation un jardin irrigué par l'eau du puits (culture de légumes tels
+    que carottes, courges, navets, choux, ...) si nécessaire à la population</li>
+ <li>création d'un espace bibliothèque, en cours de réalisation</li>
+</ul>
+
+<div class="image-gauche">
+  <img src="puits2.jpg" alt="Le puits avec, en avant plan, le jardin"/>
+</div>
+
+<div class="image-droite">
+  <img src="puits3.jpg" alt="Le puits avec la pompe alimentée par le
+  panneau solaire"/>
+</div>
+
+<p>
+Le montant de ces modifications s'élève à 11 000 €.
+</p>
+
+
+<p>
+Le partenariat avec les deux groupes scolaires
+de <a href="http://fr.wikipedia.org/wiki/Chaudeney-sur-Moselle">Chaudeney</a>
+et
+de <a href="http://fr.wikipedia.org/wiki/Lay-Saint-Remy">Lay-Saint-Remy</a>,
+ainsi qu'avec la classe du collège de la Croix de Metz
+de <a href="http://fr.wikipedia.org/wiki/Toul">Toul</a>, est
+poursuivi.
+</p>
 
 <?php
 

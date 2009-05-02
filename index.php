@@ -20,14 +20,16 @@ fait part de leur désir de scolariser sur l'oasis leurs enfants.
 
 <p>Avec quelques amis, nous avons créé une association loi
 1901, <em>Une oasis, une école</em>, en février 2007, pour les aider à
-financer ce projet d'école. Simultanément, nos amis mauritaniens
-fondaient une association villageoise, <em>Waha Medrassa</em>.
+financer une école, un puits et un jardin. Simultanément, nos amis
+mauritaniens fondaient une association villageoise, <em>Waha
+Medrassa</em>.
 </p>
 
-<p>Ce n'est qu'une première étape. Nos deux associations continueront
-à réaliser d'autres actions dans le cadre du développement local.</p>
+<p>Ce n'est qu'une première étape. Notre association continuera à
+réaliser d'autres actions à la demande d'associations villageoises
+mauritaniennes dans le cadre du développement local.</p>
 
-<p><a href="projet.php">Découvrez notre projet</a> plus en
+<p><a href="projet.php">Découvrez nos projets</a> plus en
 détails.</p>
 
 <?php

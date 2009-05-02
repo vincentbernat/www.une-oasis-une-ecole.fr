@@ -27,6 +27,16 @@ hr.blocker {
        visibility: hidden;
 }
 
+address {
+   text-align: center;
+}
+
+div.image-centre { 
+   clear: both;
+   text-align: center;
+   padding: 10px;
+}
+
 div.image-droite { 
    float: right;
    padding: 10px;

@@ -8,7 +8,7 @@ include("header.inc.php");
   <img src="enfants2.jpg" alt="Des enfants de l'oasis de Lagueïla"/>
 </div>
 
-<h1>Objet du projet</h1>
+<h1>Objet du projet 2007-2008</h1>
 
 <p>
 Dans l'oasis de Lagueïla en <a href="http://fr.wikipedia.org/wiki/Mauritanie">Mauritanie</a>, il s'agit de financer la construction et l'équipement d'une école, d'un jardin pédagogique, du logement de l'instituteur et  d'un puits proche de l'école et des cases.
@@ -39,7 +39,7 @@ posent au quotidien : l'eau, la santé, la scolarisation des enfants.
 </blockquote>
 
 <div class="image-gauche">
-  <img src="village.jpg" alt="Un abreuvoir pour les chameaux"/>
+  <img src="chamelier.jpg" alt="Un chamelier dans le désert de l'Adrar"/>
 </div>
 
 <p>Malgré toutes les difficultés, les habitants de l'oasis restent
@@ -80,7 +80,8 @@ et conduit le projet en Mauritanie.</p>
 <p>L'association <em>Une oasis, une école</em> veut aider les
 habitants de l'oasis à construire et équiper un bâtiment, édifié en
 pierre, capable d'accueillir une quarantaine de garçons et filles du
-primaire, à la rentrée 2007-2008.</p>
+primaire, à la rentrée 2007-2008. Elle financera un puits permettant
+  la création d'un jardin potager.</p>
 
 <p>Pour cela, elle récolte des fonds, les transfère, suit leur
 utilisation et rend compte aux donateurs.</p>
@@ -89,33 +90,31 @@ utilisation et rend compte aux donateurs.</p>
 <ul>
   <li>recherche de donateurs et de subventions</li>
   <li>participations à des manifestations associatives culturelles,
-  brocantes</li>
-  <li>vente de bijoux mauritaniens</li>
+  sportives et éducatives telles que <em>« Courir pour eux »</em>,
+  brocantes et marchés de Noël</li>
+  <li>vente de bijoux réalisés par les coopératives de femmes
+  mauritanienness</li>
 </ul>
 
 <h1>Les partenaires</h1>
 
-<p>La <a href="http://www.ligue54.org/">Ligue de l'Enseignement 54</a> conseille
-et aide pour les aspects conduite du projet (constitution de dossiers,
+<p>La <a href="http://www.ligue54.org/">Ligue de l'Enseignement 54</a>
+aide pour les aspects conduite du projet (constitution de dossiers,
 demandes de manifestation, etc.).</p>
 
 <p>Les entités suivantes ont participé au financement du projet en 2008 :</p>
 
 <ul>
   <li>le <a href="http://www.cg54.fr/">Conseil Général de
-  Meurthe-et-Moselle</a> (subvention de 2000 €),</li>
-  <li>la mairie de <a
-  href="http://fr.wikipedia.org/wiki/Chaudeney-sur-Moselle">Chaudeney</a>
-  (subvention de 300 €),</li>
-  <li>la mairie de <a href="http://fr.wikipedia.org/wiki/Velaine-en-Haye">Velaine-en-Haye</a>
-  (en cours).</li>
-</ul>
-
-<p>Les mairies de <a
-href="http://fr.wikipedia.org/wiki/Pierre-la-Treiche">Pierre-la-Treiche</a>
-et de <a
-href="http://fr.wikipedia.org/wiki/Lay-Saint-Remy">Lay-Saint-Remy</a>
-ont également été sollicitées.</p>
+  Meurthe-et-Moselle</a>,</li>
+  <li>les mairies
+  de <a href="http://fr.wikipedia.org/wiki/Chaudeney-sur-Moselle">Chaudeney
+  sur Moselle</a>,
+  <a href="http://fr.wikipedia.org/wiki/Pierre-la-Treiche">Pierre-la-Treiche</a>,
+  <a href="http://fr.wikipedia.org/wiki/Lay-Saint-Remy">Lay-Saint-Remy</a>,
+  <a href="http://fr.wikipedia.org/wiki/Foug">Foug</a> et
+  <a href="http://fr.wikipedia.org/wiki/Velaine-en-Haye">Velaine-en-Haye</a>.
+  </p>
 
 <?php
 
