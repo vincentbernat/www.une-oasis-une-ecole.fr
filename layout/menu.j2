@@ -1,0 +1,22 @@
+{# -*- html -*- #}
+<nav>
+  {% set current = (resource.url == "/index.html") and "/" or resource.url %}
+  <div class="oasis-carousel">
+    {% for menu in resource.meta.menu %}
+    {% set active=(content_url(current) == content_url(menu['page'])) %}
+    <img {% if active %} class="active"{% endif %}
+	 src="{{ media_url('images/b/' + menu['image']) }}"
+	 alt="{{ menu['name']|e }}">
+    {% endfor %}
+  </div>
+  <div class="oasis-menu"><ul>
+    {% for menu in resource.meta.menu %}
+    {% set active=(content_url(current) == content_url(menu['page'])) %}
+    <li {% if active %} class="active"{% endif %}>
+      <a href="{{ content_url(menu['page']) }}">
+	{{ menu['name']|e }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul></div>
+</nav>

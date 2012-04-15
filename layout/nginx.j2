@@ -1,0 +1,15 @@
+{# nginx configuration to be included #}
+index         index.html;
+error_page    404 {{content_url('/404.html')}};
+add_header    "X-UA-Compatible" "IE=Edge,chrome=1";
+
+location = /nginx.conf {
+  expires     max;
+  return      404;
+}
+
+{# redirections #}
+location = /favicon.ico {
+  expires     60d;
+  rewrite ^  /media/favicon.ico break;
+}

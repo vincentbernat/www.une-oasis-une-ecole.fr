@@ -1,0 +1,44 @@
+extends: "site.yaml"
+mode: production
+media_url: //d3g644l4515ldw.cloudfront.net/
+deploy_root: '.final'
+plugins:
+  - hyde.ext.plugins.meta.MetaPlugin
+  - extensions.combine.CombinePlugin
+  - hyde.ext.plugins.auto_extend.AutoExtendPlugin
+  - hyde.ext.plugins.less.LessCSSPlugin
+  - hyde.ext.plugins.textlinks.TextlinksPlugin
+  - hyde.ext.plugins.urls.UrlCleanerPlugin
+  - hyde.ext.plugins.images.ImageSizerPlugin
+  - hyde.ext.plugins.optipng.OptiPNGPlugin
+  - hyde.ext.plugins.jpegoptim.JPEGOptimPlugin
+  - extensions.images.JPEGTranPlugin
+  - extensions.coffee.CoffeePlugin
+  - hyde.ext.plugins.uglify.UglifyPlugin
+less:
+  app: /usr/bin/lessc
+  args:
+    compress: ""
+optipng:
+  app: /usr/bin/optipng
+  args:
+    quiet: ""
+jpegoptim:
+  app: /usr/bin/jpegoptim
+  args:
+    max: "70"
+    strip-all: ""
+jpegtran:
+  app: /usr/bin/jpegtran
+  args:
+    optimize: ""
+    progressive: ""
+    copy: "none"
+uglify:
+  app: /usr/bin/uglifyjs
+  args:
+    no-copyright: ""
+urlcleaner:
+  index_file_names:
+    - index.html
+  append_slash: true

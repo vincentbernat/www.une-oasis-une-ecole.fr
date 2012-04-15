@@ -1,0 +1,9 @@
+---
+extends: false
+---
+User-agent: *
+Allow: /
+{% set sitemap = "sitemap.xml" %}
+{% if site.content.resource_from_relative_path(sitemap) %}
+Sitemap: {{ base }}{{ content_url(sitemap) }}
+{% endif %}

@@ -1,0 +1,57 @@
+mode: development
+media_root: media
+media_url: /media
+base_url: /
+plugins:
+  - hyde.ext.plugins.meta.MetaPlugin
+  - hyde.ext.plugins.git.GitDatesPlugin
+  - extensions.combine.CombinePlugin
+  - hyde.ext.plugins.auto_extend.AutoExtendPlugin
+  - hyde.ext.plugins.less.LessCSSPlugin
+  - extensions.coffee.CoffeePlugin
+  - hyde.ext.plugins.textlinks.TextlinksPlugin
+context:
+  data:
+    base: http://beta.une-oasis-une-ecole.fr
+meta:
+  nodemeta: meta.yaml
+  extends: base.j2
+  default_block: article
+  author: Rolande Bernat
+  title: ""
+  created: git
+  modified: git
+  language: fr
+  analytics: UA-21482482-1
+  menu:
+    -
+       name: "Accueil"
+       page: ""
+       image: "chameau.jpg"
+    -
+       name: "Projet"
+       page: "projet.html"
+       image: "ecole.jpg"
+    -
+       name: "Réalisations"
+       page: "realisations.html"
+       image: "transport.jpg"
+    -
+       name: "Perspectives"
+       page: "perspectives.html"
+       image: "dunes.jpg"
+    -
+       name: "Manifestations"
+       page: "manifestation.html"
+       image: "enfants.jpg"
+    -
+       name: "Contacts"
+       page: "contact.html"
+       image: "guide.jpg"
+less:
+  app: /usr/bin/lessc
+markdown:
+  extensions:
+    - extra
+    - toc
+  output_format: html

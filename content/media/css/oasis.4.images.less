@@ -1,0 +1,56 @@
+/* -*- css -*- */
+
+article {
+    /* Images */
+    img {
+	max-width: 100%;
+	height: auto;
+	background-color: white;
+	padding: 1em;
+	vertical-align: bottom;
+	float: left;
+	margin: 1em;
+    }
+    .oasis-image {
+	/* Class added by JS */
+	position: relative;
+	transform: rotate(2deg);
+	box-shadow: 7px 7px 30px 1px #222;
+	margin: 1em 3em 1em -9em;
+	float: left;
+	& img {
+	    float: none;
+	    margin: 0;
+	}
+	&:after {
+	    display: block;
+	    content: "";
+	    position: absolute;
+	    width: 40%;
+	    height: 30px;
+	    top: -21px;
+	    left: 30%;
+	    background: rgba(254, 254, 254, .6);
+	    box-shadow: 0px 0 3px rgba(0,0,0,0.1);
+	}
+    }
+    .oasis-image-alternate {
+	margin: 1em -9em 1em 3em;
+	float: right;
+    }
+}
+
+@media only screen and (max-width: @page-width) {
+    article {
+	img {
+	    float: none;
+	}
+	.oasis-image {
+	    float: left;
+	    margin: 1em 2em 1em 0;
+	    &:after {
+		display: none;
+	    }
+	}
+    }
+}

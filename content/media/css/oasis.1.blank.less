@@ -1,0 +1,35 @@
+/* -*- css -*- */
+
+html {
+    background: #E7BD93 url('../images/l/sand.jpg') repeat;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0 auto;
+    width: @page-width;
+    min-height: 100%;
+    background: linear-gradient(top,
+				rgba(255,255,255,0.8),
+				rgba(255,255,255,0.7));
+    border-left: 3px solid rgba(255,255,255,0.9);
+    border-right: 4px solid rgba(255,255,255,0.9);
+    box-shadow: 0 0 50px 5px black;
+    .no-cssgradient & {
+	background: rgba(255,255,255,0.7);
+    }
+    .no-rgba & {
+	background: white url("../images/l/translucent.png") repeat;
+	border-left: 3px solid white;
+	border-right: 4px solid white;
+    }
+}
+
+@media only screen and (max-width: @page-width) {
+    body {
+	margin: 0;
+	border: 0;
+	width: 100%;
+    }
+}
