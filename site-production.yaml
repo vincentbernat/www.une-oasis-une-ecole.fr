@@ -4,6 +4,7 @@ media_url: //d3g644l4515ldw.cloudfront.net/
 deploy_root: '.final'
 plugins:
   - hyde.ext.plugins.meta.MetaPlugin
+  - hyde.ext.plugins.git.GitDatesPlugin
   - extensions.combine.CombinePlugin
   - hyde.ext.plugins.auto_extend.AutoExtendPlugin
   - hyde.ext.plugins.less.LessCSSPlugin
