@@ -1,5 +1,5 @@
 /* Modernizr 2.5.3 (Custom Build) | MIT & BSD
- * Build: http://www.modernizr.com/download/#-rgba-cssgradients-csstransforms-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ * Build: http://www.modernizr.com/download/#-opacity-rgba-cssgradients-csstransforms-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load
  */
 ;
 
@@ -191,6 +191,11 @@ window.Modernizr = (function( window, document, undefined ) {
         setCss('background-color:rgba(150,255,150,.5)');
 
         return contains(mStyle.backgroundColor, 'rgba');
+    };
+    tests['opacity'] = function() {
+                setCssAll('opacity:.55');
+
+                    return /^0.55$/.test(mStyle.opacity);
     };
 
     tests['cssgradients'] = function() {

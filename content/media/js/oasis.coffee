@@ -6,8 +6,9 @@ oasis = {}
 #
 oasis.prefixfree = ->
   pf = window.PrefixFree
+  return if not pf?
   for property in pf.properties
-    do (property) ->
+    e = do (property) ->
       camelCased = window.StyleFix.camelCase(property)
       PrefixCamelCased = pf.prefixProperty(property, true)
       $.cssProps[camelCased] = PrefixCamelCased
@@ -17,7 +18,7 @@ oasis.prefixfree = ->
 #
 oasis.effects = ->
   # Turn any article image into the appropriate class and randomize a bit the rotation
-  do ->
+  e = do ->
     nb = 0
     $("article p > img").parent()
       .addClass("oasis-image")
@@ -30,7 +31,7 @@ oasis.effects = ->
         $(el).addClass("oasis-image-alternate") if (nb++) % 2 != 0
 
   # Handle menu by changing the image appropriately
-  do ->
+  e = do ->
     carousel = $("nav .oasis-carousel")
     menu = $("nav .oasis-menu")
 

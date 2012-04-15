@@ -11,8 +11,14 @@ nav {
     img:first-child {
 	position: relative;
     }
-    img.active, img.active.unselected, img.selected { opacity: 1; }
-    img.unselected { opacity: 0; }
+    img.active, img.active.unselected, img.selected {
+	opacity: 1;
+	.no-opacity & { visibility: visible; }
+    }
+    img.unselected {
+	opacity: 0;
+	.no-opacity & { visibility: hidden; }
+    }
     img {
 	position: absolute;
 	vertical-align: bottom;
@@ -20,6 +26,7 @@ nav {
 	max-width: 100%;
 	height: auto;
 	opacity: 0;
+	.no-opacity & { visibility: hidden; }
 	transition: opacity 0.5s ease-in-out;
 	z-index: 3;
     }
@@ -31,7 +38,7 @@ nav {
 	width: 100%;
 	background: rgba(255,255,255,0.6);
 	.no-rgba & {
-	    background: white url("../images/l/translucent.png") repeat;
+	    background: transparent url("../images/l/translucent.png") repeat;
 	}
 	.font-size(1.625);
 	position: relative; z-index: 10;
