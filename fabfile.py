@@ -78,7 +78,11 @@ def build():
             local("git clean -d -f")
 
 def push():
-    """Push production content to ace"""
+    """Push production content to remote locations"""
+    # git
+    local("git push github")
+    local("git push ace.luffy.cx")
+
     # media.luffy.cx
     local("rsync --exclude=.git -a .final/media/ ace.luffy.cx:/srv/www/oasis/media/")
 
