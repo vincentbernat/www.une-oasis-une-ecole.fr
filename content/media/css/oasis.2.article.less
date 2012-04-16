@@ -152,3 +152,22 @@ address {
     text-align: center;
     .clearfix;
 }
+
+.toc {
+    margin: (@line-height*1em) 0 (@line-height*1em) 3em;
+    padding: 0 2em;
+    max-width: 25em;
+    border-left: 1px dashed lighten(@theme-color, 30%);
+    ul {
+        margin-left: 0.5em;
+        list-style-type: decimal;
+        .font-size(0.875);
+        ul {
+            font-size: 1em;
+        }
+        li {
+            background: none;
+            padding-left: 1em;
+        }
+    }
+}
