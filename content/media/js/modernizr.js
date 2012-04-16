@@ -1,5 +1,5 @@
 /* Modernizr 2.5.3 (Custom Build) | MIT & BSD
- * Build: http://www.modernizr.com/download/#-opacity-rgba-cssgradients-csstransforms-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ * Build: http://www.modernizr.com/download/#-opacity-rgba-csstransforms-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load
  */
 ;
 
@@ -197,19 +197,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
                     return /^0.55$/.test(mStyle.opacity);
     };
-
-    tests['cssgradients'] = function() {
-        var str1 = 'background-image:',
-            str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
-            str3 = 'linear-gradient(left top,#9f9, white);';
-
-        setCss(
-                       (str1 + '-webkit- '.split(' ').join(str2 + str1) 
-                       + prefixes.join(str3 + str1)).slice(0, -str1.length)
-        );
-
-        return contains(mStyle.backgroundImage, 'gradient');
-    };    tests['csstransforms'] = function() {
+    tests['csstransforms'] = function() {
         return !!testPropsAll('transform');
     };
 
