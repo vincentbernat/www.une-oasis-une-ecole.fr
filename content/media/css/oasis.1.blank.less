@@ -24,6 +24,33 @@ body {
     }
 }
 
+.oasis-scrolling-header {
+    display: none;
+    visibility: hidden;
+}
+
+@media only screen and (min-width: @page-width) {
+    .csstransforms.rgba .oasis-scrolling-header {
+	position: fixed;
+	display: block;
+	visibility: visible;
+
+	top: 0;
+	left: 1em;
+	transform: rotate(90deg);
+	transform-origin: left center;
+
+	font-family: @font-regular;
+	.font-size(2.125);
+	color: transparent;
+	text-shadow: rgba(0,0,0,0.2) -1px 0,
+	rgba(0,0,0,0.4) 0 -1px,
+	rgba(231,189,147,0.9) 0 1px,
+	rgba(0,0,0,0.4) -1px -2px;
+	z-index: -5;
+    }
+}
+
 @media only screen and (max-width: @page-width) {
     body {
 	margin: 0;
