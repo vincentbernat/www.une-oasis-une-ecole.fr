@@ -12,7 +12,7 @@ plugins:
   - hyde.ext.plugins.textlinks.TextlinksPlugin
 context:
   data:
-    base: http://beta.une-oasis-une-ecole.fr
+    base: http://www.une-oasis-une-ecole.fr
 meta:
   nodemeta: meta.yaml
   extends: base.j2
