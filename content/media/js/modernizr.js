@@ -1,5 +1,5 @@
 /* Modernizr 2.5.3 (Custom Build) | MIT & BSD
- * Build: http://www.modernizr.com/download/#-opacity-rgba-csstransforms-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ * Build: http://www.modernizr.com/download/#-opacity-rgba-textshadow-csstransforms-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load
  */
 ;
 
@@ -192,6 +192,14 @@ window.Modernizr = (function( window, document, undefined ) {
 
         return contains(mStyle.backgroundColor, 'rgba');
     };
+
+
+
+    tests['textshadow'] = function() {
+        return document.createElement('div').style.textShadow === '';
+    };
+
+
     tests['opacity'] = function() {
                 setCssAll('opacity:.55');
 

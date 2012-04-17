@@ -10,6 +10,8 @@ body {
     margin: 0 auto;
     width: @page-width;
     min-height: 100%;
+}
+.oasis-sheet {
     background: rgba(255,255,255,0.7);
     background: linear-gradient(top,
 				rgba(255,255,255,0.8),
@@ -21,6 +23,26 @@ body {
 	background: transparent url("../images/l/translucent.png") repeat;
 	border-left: 3px solid white;
 	border-right: 4px solid white;
+    }
+    border-radius: 0 0 1em 1em;
+}
+
+footer {
+    margin: 1em;
+    text-align: right;
+    color: #333;
+    .rgba.textshadow & {
+	color: transparent;
+	text-shadow: rgba(0,0,0,0.2) -1px 0,
+	rgba(0,0,0,0.4) 0 -1px,
+	rgba(231,189,147,0.9) 0 1px,
+	rgba(0,0,0,0.4) -1px -2px;
+	a { color: rgba(40, 40, 40, 0.4); }
+    }
+    a {
+	color: #333;
+	text-decoration: none;
+	font-style: italic;
     }
 }
 

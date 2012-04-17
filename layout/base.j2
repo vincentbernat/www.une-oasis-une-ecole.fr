@@ -19,7 +19,10 @@
   <script src="{{ media_url('js/mp.js') }}"></script>
 </head>
 <body>
+
+  <div class="oasis-sheet">
   {% include "menu.j2" %}
+
   <article>
 {% if resource.meta.title %}
     <header>
@@ -32,6 +35,13 @@
       {%- endfilter %}
     </div>
   </article>
+  </div>
+
+  <footer>
+    Créé par <a href="http://vincent.bernat.im">Vincent Bernat</a> à
+    l'aide de <a href="https://github.com/hyde/hyde">Hyde</a>.
+    <a href="https://github.com/vincentbernat/www.une-oasis-une-ecole.fr">Sources</a>.
+  </footer>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="{{ media_url('js/oasis.js') }}" async></script>
