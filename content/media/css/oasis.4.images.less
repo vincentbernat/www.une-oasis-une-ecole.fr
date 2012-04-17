@@ -16,7 +16,7 @@ article {
 	position: relative;
 	transform: rotate(2deg);
 	box-shadow: 7px 7px 30px 1px #222;
-	margin: 1em 3em 1em -10em;
+	margin: 1em 3em 1em -6em;
 	float: left;
 	& img {
 	    float: none;
@@ -26,16 +26,16 @@ article {
 	    display: block;
 	    content: "";
 	    position: absolute;
-	    width: 40%;
+	    width: 30%;
 	    height: 30px;
 	    top: -21px;
-	    left: 30%;
+	    left: 35%;
 	    background: rgba(254, 254, 254, .6);
 	    box-shadow: 0px 0 3px rgba(0,0,0,0.1);
 	}
     }
     .oasis-image-alternate {
-	margin: 1em -10em 1em 3em;
+	margin: 1em -6em 1em 3em;
 	float: right;
     }
 }
@@ -45,11 +45,31 @@ article {
 	img {
 	    float: none;
 	}
-	.oasis-image {
+	.oasis-image, .oasis-image-alternate {
 	    float: left;
 	    margin: 1em 2em 1em 0;
 	    &:after {
 		display: none;
+	    }
+	}
+    }
+}
+@media only screen and (min-width: @more-width) {
+    article {
+	.oasis-image {
+	    margin: 1em 3em 1em -((@more-width - @page-width)/2 + 2em);
+	    &:after {
+		transform: rotate(30deg);
+		top: -5px;
+		left: 80%;
+	    }
+	}
+	.oasis-image-alternate {
+	    margin: 1em -((@more-width - @page-width)/2 + 2em) 1em 3em;
+	    &:after {
+		transform: rotate(-30deg);
+		top: -10px;
+		left: -7%;
 	    }
 	}
     }
