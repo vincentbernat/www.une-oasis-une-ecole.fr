@@ -69,3 +69,23 @@ class CoffeePlugin(CLTransformer):
         args = [unicode(coffee)]
         args.extend(["-c", "-p", unicode(source)])
         return self.call_app(args)
+
+from hyde.ext.plugins.uglify import UglifyPlugin as OrigUglifyPlugin
+
+class UglifyPlugin(OrigUglifyPlugin):
+    """
+    Plugin for UglifyJS that will also handle coffee files (only when
+    they are compiled to JS!)
+    """
+
+    def text_resource_complete(self, resource, text):
+        # This is very hacky. When that resource in the original
+        # `text_resource_complete` method is only used to check the
+        # extension. Therefore, we will provide a mock object just for
+        # this.
+        if resource.source_file.kind not in ["js", "coffee"]:
+            return
+        mock = lambda: None
+        mock.source_file = lambda: None
+        mock.source_file.kind = "js"
+        return super(UglifyPlugin, self).text_resource_complete(mock, text)
