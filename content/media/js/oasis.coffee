@@ -52,7 +52,7 @@ oasis.effects.menu = ->
 # 1.3 Scrolling header
 oasis.effects.scrolling = ->
   # Add current section title in the margin
-  if not Modernizr.csstransforms or not Modernizr.rgba
+  if not Modernizr.csstransforms or not Modernizr.rgba or not Modernizr.textshadow
     return
   # Create scrolling header
   header = $("<div>").addClass("oasis-scrolling-header")
