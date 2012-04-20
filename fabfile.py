@@ -60,9 +60,9 @@ def build():
                           '"'
                           r"s@\([\"']\)%s%s\1@\1%s%s\1@g"
                           '"' % (media, f, media, newname))
-                # Fix permissions
-                local(r"find * -type f -print0 | xargs -r0 chmod a+r")
-                local(r"find * -type d -print0 | xargs -r0 chmod a+rx")
+        # Fix permissions
+        local(r"find * -type f -print0 | xargs -r0 chmod a+r")
+        local(r"find * -type d -print0 | xargs -r0 chmod a+rx")
 
 
         local("git add *")
