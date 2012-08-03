@@ -19,3 +19,4 @@ location = /favicon.ico {
 %}
 rewrite ^{{ content_url(res.url)|replace(".html", ".php") }} {{ content_url(res.url) }} permanent;
 {% endfor %}
+rewrite ^/index.php / permanent;
