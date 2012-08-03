@@ -15,7 +15,7 @@ location = /favicon.ico {
 }
 
 {% for res in site.content.walk_resources()
-   if res.source.kind == "html"
+   if res.source.kind == "html" and content_url(res.url).endswith(".html")
 %}
 rewrite ^{{ content_url(res.url)|replace(".html", ".php") }} {{ content_url(res.url) }} permanent;
 {% endfor %}
