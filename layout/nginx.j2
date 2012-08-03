@@ -13,3 +13,9 @@ location = /favicon.ico {
   expires     60d;
   rewrite ^  /media/favicon.ico break;
 }
+
+{% for res in site.content.walk_resources()
+   if res.source.kind == "html"
+%}
+rewrite ^{{ content_url(res.url)|replace(".html", ".php") }} {{ content_url(res.url) }} permanent;
+{% endfor %}
