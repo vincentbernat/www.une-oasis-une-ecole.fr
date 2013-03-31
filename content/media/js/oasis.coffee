@@ -81,6 +81,7 @@ oasis.effects.scrolling = ->
             d1 = -d1 if d1 < 0
             d2 = -d2 if d2 < 0
             Math.min(d1,d2))
+        distances = $.makeArray(distances)
         opacity = Math.min(distances...)/100
         opacity = 1 if opacity > 1
         header.css(top: "10px", opacity: opacity).toggle(opacity > 0)
