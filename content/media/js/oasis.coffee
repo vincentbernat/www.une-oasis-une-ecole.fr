@@ -57,29 +57,35 @@ oasis.effects.scrolling = ->
   # Create scrolling header
   header = $("<div>").addClass("oasis-scrolling-header")
   $("body").prepend(header)
+  timeout = null
   $(window).scroll ->
-    # Locate the appropriate title to display
-    h1s = $("article div[role='main'] h1")
-    y = $(window).scrollTop()
-    title = h1s.filter( -> $(@).offset().top < y).last().html()
-    if not title?
-      header.hide()
-    else
-      header.html(title)
-      # Compute opacity before displaying
-      distances = h1s.map( ->
-        d1 = $(@).offset().top - y
-        d2 = $(@).offset().top - y - header.width()
-        if d1*d2 < 0
-          # Our scrolling header is between two sections
-          0
-        else
-          d1 = -d1 if d1 < 0
-          d2 = -d2 if d2 < 0
-          Math.min(d1,d2))
-      opacity = Math.min(distances...)/100
-      opacity = 1 if opacity > 1
-      header.css(top: "10px", opacity: opacity).toggle(opacity > 0)
+    if timeout?
+      return
+    fn = ->
+      # Locate the appropriate title to display
+      h1s = $("article div[role='main'] h1")
+      y = $(window).scrollTop()
+      title = h1s.filter( -> $(@).offset().top < y).last().html()
+      if not title?
+        header.hide()
+      else
+        header.html(title)
+        # Compute opacity before displaying
+        distances = h1s.map( ->
+          d1 = $(@).offset().top - y
+          d2 = $(@).offset().top - y - header.width()
+          if d1*d2 < 0
+            # Our scrolling header is between two sections
+            0
+          else
+            d1 = -d1 if d1 < 0
+            d2 = -d2 if d2 < 0
+            Math.min(d1,d2))
+        opacity = Math.min(distances...)/100
+        opacity = 1 if opacity > 1
+        header.css(top: "10px", opacity: opacity).toggle(opacity > 0)
+      timeout = null
+    timeout = setTimeout(fn, 300)
 
 #
 # Final: execute everything when jQuery is ready
