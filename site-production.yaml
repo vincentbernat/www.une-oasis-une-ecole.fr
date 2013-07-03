@@ -8,6 +8,7 @@ plugins:
   - extensions.combine.CombinePlugin
   - hyde.ext.plugins.auto_extend.AutoExtendPlugin
   - hyde.ext.plugins.less.LessCSSPlugin
+  - extensions.css.CSSPrefixerPlugin
   - hyde.ext.plugins.textlinks.TextlinksPlugin
   - hyde.ext.plugins.urls.UrlCleanerPlugin
   - hyde.ext.plugins.images.ImageSizerPlugin
@@ -16,10 +17,6 @@ plugins:
   - extensions.images.JPEGTranPlugin
   - extensions.coffee.CoffeePlugin
   - extensions.coffee.UglifyPlugin
-less:
-  app: /usr/bin/lessc
-  args:
-    compress: ""
 optipng:
   app: /usr/bin/optipng
   args:
