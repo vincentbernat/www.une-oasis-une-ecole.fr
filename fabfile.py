@@ -1,4 +1,5 @@
 from fabric.api import *
+from fabric.contrib.console import confirm
 
 import os
 import shutil
@@ -13,21 +14,25 @@ env.command_prefixes = [ 'export PATH=$HOME/.virtualenvs/hyde/bin:$PATH',
                          'export VIRTUAL_ENV=$HOME/.virtualenvs/hyde' ]
 
 def _hyde(args):
-    return local('python ../hyde/h %s' % args)
+    return local('hyde -x %s' % args)
 
+@task
 def regen():
     """Regenerate dev content"""
     local('rm -rf deploy')
     gen()
 
+@task
 def gen():
     """Generate dev content"""
     _hyde('gen')
 
+@task
 def serve():
     """Serve dev content"""
     _hyde('serve -a 0.0.0.0')
 
+@task
 def build():
     """Build production content"""
     local("git checkout master")
@@ -67,16 +72,16 @@ def build():
 
         local("git add *")
         local("git diff --stat HEAD")
-        answer = prompt("More diff?", default="yes")
-        if answer.lower().startswith("y"):
+        if confirm("More diff?", default=True):
             local("git diff --word-diff HEAD")
-        answer = prompt("Keep?", default="yes")
-        if answer.lower().startswith("y"):
+        if confirm("Keep?", default=True):
             local('git commit -a -m "Autocommit"')
         else:
             local("git reset --hard")
             local("git clean -d -f")
+            abort("Build rollbacked")
 
+@task
 def push():
     """Push production content to remote locations"""
     # git
