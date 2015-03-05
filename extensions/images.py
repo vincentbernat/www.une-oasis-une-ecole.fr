@@ -7,9 +7,9 @@ Contains classes to handle images related things
 
 from hyde.plugin import Plugin
 from hyde.plugin import CLTransformer
-from hyde.fs import File, Folder
+from fswrap import File, Folder
 
-import Image
+from PIL import Image
 import new
 import os
 from functools import partial

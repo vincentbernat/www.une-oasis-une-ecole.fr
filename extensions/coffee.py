@@ -7,7 +7,7 @@ import subprocess
 import traceback
 
 from hyde.plugin import CLTransformer
-from hyde.fs import File
+from fswrap import File
 
 class CoffeePlugin(CLTransformer):
     """
@@ -70,7 +70,7 @@ class CoffeePlugin(CLTransformer):
         args.extend(["-c", "-p", unicode(source)])
         return self.call_app(args)
 
-from hyde.ext.plugins.uglify import UglifyPlugin as OrigUglifyPlugin
+from hyde.ext.plugins.js import UglifyPlugin as OrigUglifyPlugin
 
 class UglifyPlugin(OrigUglifyPlugin):
     """
