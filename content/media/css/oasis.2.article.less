@@ -127,6 +127,8 @@ blockquote {
     em { font-style: normal; }
     article & {
 	&:before {
+            position: relative;
+	    left: -0.555em;
 	    display: block;
 	    font-size: 4.5em;
 	    line-height: 0.888;
@@ -134,7 +136,6 @@ blockquote {
 	    overflow: hidden;
 	    content: '«';
 	    color: @theme-color;
-	    margin-left: -0.555em;
 	    margin-bottom: -0.888em;
 	    font-family: Baskerville,
                  'Goudy Old Style','Goudy Bookletter 1911',
