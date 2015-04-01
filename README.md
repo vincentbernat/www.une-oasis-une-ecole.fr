@@ -13,7 +13,7 @@ else.
 
 The favicon was taken from [here][favicon].
 
-[hyde]: http://ringce.com/hyde
+[hyde]: https://github.com/hyde/hyde
 [cc1]: http://creativecommons.org/licenses/by-nc-sa/3.0/
 [cc2]: http://creativecommons.org/licenses/by/3.0/
 [favicon]: http://www.softicons.com/free-icons/holidays-icons/summer-holiday-icons-by-dapino/palm-tree-icon
