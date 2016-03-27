@@ -23,7 +23,6 @@ meta:
   created: git
   modified: git
   language: fr
-  analytics: UA-21482482-1
   menu:
     -
        name: "Accueil"
