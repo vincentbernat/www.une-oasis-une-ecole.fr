@@ -22,20 +22,27 @@ article {
 	max-width: 100%;
 	-webkit-backface-visibility: hidden;
 
+	@media only print {
+	    box-shadow: none;
+	}
+
 	& img {
 	    float: none;
 	    margin: 0;
 	}
+
 	&:after {
-	    display: block;
-	    content: "";
-	    position: absolute;
-	    width: 30%;
-	    height: 30px;
-	    top: -21px;
-	    left: 35%;
-	    background: rgba(254, 254, 254, .6);
-	    box-shadow: 0px 0 3px rgba(0,0,0,0.1);
+	    @media only screen {
+		display: block;
+		content: "";
+		position: absolute;
+		width: 30%;
+		height: 30px;
+		top: -21px;
+		left: 35%;
+		background: rgba(254, 254, 254, .6);
+		box-shadow: 0px 0 3px rgba(0,0,0,0.1);
+	    }
 	}
     }
     .oasis-image-alternate {
