@@ -56,4 +56,3 @@ $ ->
   oasis.prefixfree()
   oasis.effects.images()
   oasis.effects.menu()
-  oasis.effects.scrolling()
