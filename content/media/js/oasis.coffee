@@ -2,18 +2,6 @@ $ = window.jQuery
 oasis = {}
 
 #
-# 0. Prefix free
-#
-oasis.prefixfree = ->
-  pf = window.PrefixFree
-  return if not pf?
-  for property in pf.properties
-    e = do (property) ->
-      camelCased = window.StyleFix.camelCase(property)
-      PrefixCamelCased = pf.prefixProperty(property, true)
-      $.cssProps[camelCased] = PrefixCamelCased
-
-#
 # 1. Effects
 #
 oasis.effects = {}
