@@ -13,9 +13,6 @@
   <link rel="icon" type="image/png" href="{{ media_url('images/l/favicon.png') }}">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cabin:400,400italic|Lobster&amp;subset=latin,latin-ext" type="text/css" data-noprefix>
   <link rel="stylesheet" href="{{ media_url('css/oasis.css') }}" type="text/css">
-{% if site.config.mode == "development" %}
-  <link rel="stylesheet" href="{{ media_url('css/grid.css') }}" type="text/css">
-{% endif %}
   <script src="{{ media_url('js/mp.js') }}"></script>
 </head>
 <body>
@@ -43,8 +40,5 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="{{ media_url('js/oasis.js') }}" async></script>
-{% if site.config.mode == "development" %}
-  <script src="{{ media_url('js/hashgrid.js') }}" async></script>
-{% endif %}
 </body>
 </html>
