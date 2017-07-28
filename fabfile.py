@@ -41,10 +41,6 @@ def build():
     media = yaml.load(file(conf))['media_url']
     _hyde('gen -c %s' % conf)
     with lcd(".final"):
-        local("find media/images -type f -name '*.png'"
-              "| xargs -n1 -I '{}' cwebp -quiet -lossless -q 50 -o '{}'.webp '{}'")
-        local("find media/images -type f -name '*.jpg'"
-              "| xargs -n1 -I '{}' cwebp -quiet -q 80 -o '{}'.webp '{}'")
         for p in [ 'media/js/*.js',
                    'media/css/*.css' ]:
             files = local("echo %s" % p, capture=True).split(" ")
