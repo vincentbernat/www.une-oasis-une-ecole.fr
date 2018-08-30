@@ -86,10 +86,15 @@ def push():
     """Push production content to remote locations"""
     # git
     local("git push github")
-    local("git push ace.luffy.cx")
 
-    # media.luffy.cx
-    local("rsync --exclude=.git -a .final/media/ ace.luffy.cx:/srv/www/oasis/media/")
+    hosts = ["web01.luffy.cx", "web02.luffy.cx"]
+
+    # media
+    for host in hosts:
+        local("rsync --exclude=.git -rcL .final/media/ "
+              "{}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
 
     # HTML
-    local("rsync --exclude=.git -a .final/ ace.luffy.cx:/srv/www/oasis/")
+    for host in hosts:
+        local("rsync --exclude=.git --exclude=media -rcL .final/ "
+              "{}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
