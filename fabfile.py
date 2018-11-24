@@ -87,7 +87,7 @@ def push():
     # git
     local("git push github")
 
-    hosts = ["web01.luffy.cx", "web02.luffy.cx", "web03.luffy.cx"]
+    hosts = ["web01.luffy.cx", "web02.luffy.cx", "web03.luffy.cx", "web04.luffy.cx"]
 
     # media
     for host in hosts:
