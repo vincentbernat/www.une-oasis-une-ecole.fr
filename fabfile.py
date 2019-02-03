@@ -76,6 +76,11 @@ def build():
             local("git diff --word-diff HEAD")
         if confirm("Keep?", default=True):
             local('git commit -a -m "Autocommit"')
+            # Restore timestamps
+            local('''
+for f in $(git ls-tree -r -t --full-name --name-only HEAD); do
+    touch -d $(git log --pretty=format:%cI -1 HEAD -- "$f") "$f";
+done''')
         else:
             local("git reset --hard")
             local("git clean -d -f")
@@ -91,10 +96,10 @@ def push():
 
     # media
     for host in hosts:
-        local("rsync --exclude=.git -rcL .final/media/ "
+        local("rsync --exclude=.git -rtL .final/media/ "
               "{}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
 
     # HTML
     for host in hosts:
-        local("rsync --exclude=.git --exclude=media -rcL .final/ "
+        local("rsync --exclude=.git --exclude=media -rtL .final/ "
               "{}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
