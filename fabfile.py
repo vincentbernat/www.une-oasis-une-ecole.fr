@@ -76,11 +76,6 @@ def build():
             local("git diff --word-diff HEAD")
         if confirm("Keep?", default=True):
             local('git commit -a -m "Autocommit"')
-            # Restore timestamps
-            local('''
-for f in $(git ls-tree -r -t --full-name --name-only HEAD); do
-    touch -d $(git log --pretty=format:%cI -1 HEAD -- "$f") "$f";
-done''')
         else:
             local("git reset --hard")
             local("git clean -d -f")
@@ -91,6 +86,13 @@ def push():
     """Push production content to remote locations"""
     # git
     local("git push github")
+
+    with lcd(".final"):
+        # Restore timestamps
+        local('''
+for f in $(git ls-tree -r -t --full-name --name-only HEAD); do
+    touch -d $(git log --pretty=format:%cI -1 HEAD -- "$f") "$f";
+done''')
 
     hosts = ["web02.luffy.cx", "web03.luffy.cx", "web04.luffy.cx"]
 
