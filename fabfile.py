@@ -94,7 +94,7 @@ for f in $(git ls-tree -r -t --full-name --name-only HEAD); do
     touch -d $(git log --pretty=format:%cI -1 HEAD -- "$f") "$f";
 done''')
 
-    hosts = ["web02.luffy.cx", "web03.luffy.cx", "web04.luffy.cx"]
+    hosts = ["web03.luffy.cx", "web04.luffy.cx"]
 
     # media
     for host in hosts:
