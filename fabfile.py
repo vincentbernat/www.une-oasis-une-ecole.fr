@@ -103,5 +103,6 @@ done''')
 
     # HTML
     for host in hosts:
-        local("rsync --exclude=.git --exclude=media -rtL .final/ "
+        local("rsync --exclude=.git --exclude=media --delete-delay "
+              "-rtL .final/ "
               "{}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
