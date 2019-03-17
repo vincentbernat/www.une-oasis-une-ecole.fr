@@ -19,25 +19,18 @@ body {
     @media only screen {
         box-shadow: 0 0 50px 5px black;
     }
-    .no-rgba & {
-	background: transparent url("../images/l/translucent.png") repeat;
-    }
 }
 
 footer {
     margin: 1em;
     text-align: right;
-    color: #333;
-    .rgba.textshadow & {
-	color: transparent;
-	text-shadow: rgba(0,0,0,0.2) -1px 0,
-	rgba(0,0,0,0.4) 0 -1px,
-	rgba(231,189,147,0.9) 0 1px,
-	rgba(0,0,0,0.4) -1px -2px;
-	a { color: rgba(40, 40, 40, 0.4); }
-    }
+    color: transparent;
+    text-shadow: rgba(0,0,0,0.2) -1px 0,
+	         rgba(0,0,0,0.4) 0 -1px,
+	         rgba(231,189,147,0.9) 0 1px,
+	         rgba(0,0,0,0.4) -1px -2px;
     a {
-	color: #333;
+	color: rgba(40, 40, 40, 0.4);
 	text-decoration: none;
 	font-style: italic;
     }

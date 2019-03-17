@@ -13,11 +13,9 @@ nav {
     }
     img.active, img.active.unselected, img.selected {
 	opacity: 1;
-	.no-opacity & { visibility: visible; }
     }
     img.unselected {
 	opacity: 0;
-	.no-opacity & { visibility: hidden; }
     }
     img {
 	position: absolute;
@@ -26,7 +24,6 @@ nav {
 	max-width: 100%;
 	height: auto;
 	opacity: 0;
-	.no-opacity & { visibility: hidden; }
 	transition: opacity 0.5s ease-in-out;
 	z-index: 3;
 	interpolation-mode: bicubic;
@@ -38,9 +35,6 @@ nav {
     div.oasis-menu {
 	width: 100%;
 	background: rgba(255,255,255,0.6);
-	.no-rgba & {
-	    background: transparent url("../images/l/translucent.png") repeat;
-	}
 	.font-size(1.625);
 	position: relative; z-index: 10;
 	margin-top: -1.56em;
@@ -72,7 +66,7 @@ nav {
 }
 
 @media only screen and (min-width: @page-width) {
-    .rgba nav:before {
+    nav:before {
 	position: absolute;
 	display: block;
 	top: 0;
@@ -82,9 +76,9 @@ nav {
 	.font-size(4);
 	color: transparent;
 	text-shadow: rgba(0,0,0,0.1) -1px 0,
-	rgba(0,0,0,0.2) 0 -1px,
-	rgba(231,189,147,0.9) 0 1px,
-	rgba(0,0,0,0.2) -1px -2px;
+	             rgba(0,0,0,0.2) 0 -1px,
+	             rgba(231,189,147,0.9) 0 1px,
+	             rgba(0,0,0,0.2) -1px -2px;
 	content: "Une oasis, une école";
 	z-index: 100;
     }
