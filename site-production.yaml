@@ -39,4 +39,6 @@ uglify:
 urlcleaner:
   index_file_names:
     - index.html
-  append_slash: true
+  strip_extensions:
+    - html
+  append_slash: false

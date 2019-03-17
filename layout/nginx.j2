@@ -8,15 +8,29 @@ location = /nginx.conf {
   return      404;
 }
 
+location / {
+  try_files $uri.html $uri $uri/index.html =404;
+}
+location {{content_url('/404.html')}} {
+  internal;
+  try_files $uri.html $uri;
+}
+
 {# redirections #}
 location = /favicon.ico {
   expires     60d;
   rewrite ^  /media/favicon.ico break;
 }
 
-{% for res in site.content.walk_resources()
-   if res.source.kind == "html" and content_url(res.url).endswith(".html")
-%}
-rewrite ^{{ content_url(res.url)|replace(".html", ".php") }} {{ content_url(res.url) }} permanent;
-{% endfor %}
-rewrite ^/index.php / permanent;
+location ~ ^(?<canonical>.+)/(?:index\.html|index\.php)?$ {
+  access_log off;
+  log_not_found off;
+  http2_push $canonical;
+  return 301 $canonical;
+}
+location ~ ^(?<canonical>.*)\.(?:html|php)$ {
+  access_log off;
+  log_not_found off;
+  http2_push $canonical;
+  return 301 $canonical;
+}
