@@ -8,7 +8,6 @@ import glob
 import hashlib
 import yaml
 
-os.umask(0022)
 env.shell = "/bin/sh -c"
 env.command_prefixes = [ 'export PATH=$HOME/.virtualenvs/hyde/bin:$PATH',
                          'export VIRTUAL_ENV=$HOME/.virtualenvs/hyde' ]
