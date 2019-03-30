@@ -11,6 +11,7 @@ import yaml
 env.shell = "/bin/sh -c"
 env.command_prefixes = [ 'export PATH=$HOME/.virtualenvs/hyde/bin:$PATH',
                          'export VIRTUAL_ENV=$HOME/.virtualenvs/hyde' ]
+hosts = ["web03.luffy.cx", "web04.luffy.cx"]
 
 def _hyde(args):
     return local('hyde -x %s' % args)
@@ -93,8 +94,6 @@ for f in $(git ls-tree -r -t --full-name --name-only HEAD); do
     touch -d $(git log --pretty=format:%cI -1 HEAD -- "$f") "$f";
 done''')
 
-    hosts = ["web03.luffy.cx", "web04.luffy.cx"]
-
     # media
     for host in hosts:
         local("rsync --exclude=.git -rtL .final/media/ "
@@ -105,3 +104,28 @@ done''')
         local("rsync --exclude=.git --exclude=media --delete-delay "
               "-rtL .final/ "
               "{}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
+
+@task
+def analytics():
+    """Get some stats"""
+    local("for h in {};"
+          "do ssh $h zcat -f /var/log/nginx/www.une-oasis-une-ecole.fr.log\\*"
+          "   | grep -v atom.xml;"
+          "done"
+          " | LANG=en_US.utf8 goaccess --ignore-crawlers "
+          "                            --http-protocol=no "
+          "                            --no-term-resolver "
+          "                            --no-ip-validation "
+          "                            --log-format=COMBINED "
+          "                            --ignore-panel=KEYPHRASES "
+          "                            --ignore-panel=REQUESTS_STATIC "
+          "                            --ignore-panel=GEO_LOCATION "
+          "                            --sort-panel=REQUESTS,BY_VISITORS,DESC "
+          "                            --sort-panel=NOT_FOUND,BY_VISITORS,DESC "
+          "                            --sort-panel=HOSTS,BY_VISITORS,DESC "
+          "                            --sort-panel=OS,BY_VISITORS,DESC "
+          "                            --sort-panel=BROWSERS,BY_VISITORS,DESC "
+          "                            --sort-panel=REFERRERS,BY_VISITORS,DESC "
+          "                            --sort-panel=REFERRING_SITES,BY_VISITORS,DESC "
+          "                            --sort-panel=STATUS_CODES,BY_VISITORS,DESC "
+          "".format(" ".join(hosts)))
