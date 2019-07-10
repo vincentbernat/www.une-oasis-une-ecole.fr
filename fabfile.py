@@ -116,6 +116,7 @@ def analytics():
           "                            --http-protocol=no "
           "                            --no-term-resolver "
           "                            --no-ip-validation "
+          "                            --output=goaccess.html "
           "                            --log-format=COMBINED "
           "                            --ignore-panel=KEYPHRASES "
           "                            --ignore-panel=REQUESTS_STATIC "
@@ -129,3 +130,4 @@ def analytics():
           "                            --sort-panel=REFERRING_SITES,BY_VISITORS,DESC "
           "                            --sort-panel=STATUS_CODES,BY_VISITORS,DESC "
           "".format(" ".join(hosts)))
+    local("x-www-browser goaccess.html")
