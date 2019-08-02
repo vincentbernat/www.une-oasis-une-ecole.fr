@@ -35,7 +35,7 @@ def serve():
 @task
 def build():
     """Build production content"""
-    local("git checkout master")
+    local("[ $(git rev-parse --abbrev-ref HEAD) = latest ]")
     local("rm -rf .final/*")
     conf = "site-production.yaml"
     media = yaml.load(file(conf))['media_url']
