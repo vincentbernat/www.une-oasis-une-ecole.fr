@@ -17,11 +17,6 @@ location {{content_url('/404.html')}} {
 }
 
 {# redirections #}
-location = /favicon.ico {
-  expires     60d;
-  rewrite ^  /media/favicon.ico break;
-}
-
 location ~ ^(?<canonical>.+)/(?:index\.html|index\.php)?$ {
   access_log off;
   log_not_found off;
