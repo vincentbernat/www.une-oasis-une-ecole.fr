@@ -27,7 +27,7 @@ meta:
     -
        name: "Accueil"
        page: ""
-       image: "chameau.jpg"
+       image: "enfant.jpg"
     -
        name: "Projet"
        page: "projet.html"
