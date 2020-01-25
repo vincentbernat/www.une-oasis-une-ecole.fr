@@ -1,6 +1,8 @@
 {# nginx configuration to be included #}
 index         index.html;
 error_page    404 {{content_url('/404.html')}};
+expires       6h;
+add_header    "Cache-Control" "max-age=21600";
 
 location = /nginx.conf {
   expires     max;
