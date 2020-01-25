@@ -3,6 +3,8 @@ index         index.html;
 error_page    404 {{content_url('/404.html')}};
 expires       6h;
 add_header    "Cache-Control" "max-age=21600";
+add_header    "Referrer-Policy" "no-referrer-when-downgrade";
+add_header    "X-Content-Type-Options" "nosniff";
 
 location = /nginx.conf {
   expires     max;
