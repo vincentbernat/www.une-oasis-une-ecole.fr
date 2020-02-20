@@ -115,7 +115,7 @@ def build(c):
 
 
 @task
-def push(c, clean=False):
+def push(c):
     """Push built site to production"""
     c.run("git push github")
 
@@ -130,20 +130,13 @@ done''')
     # media
     for host in hosts:
         c.run("rsync --exclude=.git --copy-unsafe-links -rt "
-              ".final/media/ {}:/data/webserver/media.luffy.cx/".format(host))
+              ".final/media/ {}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
 
     # HTML
     for host in hosts:
         c.run("rsync --exclude=.git --exclude=media "
               "--delete-delay --copy-unsafe-links -rt "
-              ".final/ {}:/data/webserver/vincent.bernat.ch/".format(host))
-
-    if clean:
-        for host in hosts:
-            c.run("rsync --exclude=.git --copy-unsafe-links -rt "
-                  "--delete-delay --exclude=videos/\\*/ "
-                  ".final/media/ "
-                  "{}:/data/webserver/media.luffy.cx/".format(host))
+              ".final/ {}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
 
 
 @task
