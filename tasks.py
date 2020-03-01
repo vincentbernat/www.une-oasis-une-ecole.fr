@@ -56,7 +56,7 @@ def build(c):
     c.run("[ $(git rev-parse --abbrev-ref HEAD) = latest ]")
     c.run("rm -rf .final/*")
     conf = "site-production.yaml"
-    media = yaml.load(open(conf))['media_url']
+    media = yaml.safe_load(open(conf))['media_url']
     c.run('hyde -x gen -c %s' % conf)
     with c.cd(".final"):
         for p in ['media/js/*.js',
