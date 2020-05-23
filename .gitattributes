@@ -1,0 +1,2 @@
+* annex.largefiles=nothing
+/content/media/files/* annex.largefiles=anything

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for res in site.content.walk_resources()
-   if res.source.kind == "html" and res.source.name_without_extension != '404'
+   if res.source.kind == "html" and res.source.name_without_extension != '404' and not res.meta.noindex
 %}
 <url>
   <loc>{{base}}{{ content_url(res.url) }}</loc>

@@ -7,6 +7,9 @@
 {% else %}
   <title>Une oasis, une école</title>
 {% endif %}
+{% if resource.meta.noindex %}
+  <meta name="robots" content="noindex,nofollow">
+{% endif %}
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="canonical" href="{{base}}{{ content_url(resource.url) }}">
   <link rel="icon" href="{{ media_url('images/l/favicon.png') }}">
