@@ -49,7 +49,7 @@ meta:
        page: "contact.html"
        image: "guide.jpg"
 less:
-  app: wrapper-lessc
+  app: /usr/bin/lessc
 markdown:
   extensions:
     - extra
