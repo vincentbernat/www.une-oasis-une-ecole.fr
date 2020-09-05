@@ -12,26 +12,8 @@ plugins:
   - hyde.ext.plugins.textlinks.TextlinksPlugin
   - hyde.ext.plugins.urls.UrlCleanerPlugin
   - hyde.ext.plugins.images.ImageSizerPlugin
-  - hyde.ext.plugins.optipng.OptiPNGPlugin
-  - hyde.ext.plugins.jpegoptim.JPEGOptimPlugin
-  - extensions.images.JPEGTranPlugin
   - extensions.coffee.CoffeePlugin
   - extensions.coffee.UglifyPlugin
-optipng:
-  app: /usr/bin/optipng
-  args:
-    quiet: ""
-jpegoptim:
-  app: /usr/bin/jpegoptim
-  args:
-    max: "80"
-    strip-all: ""
-jpegtran:
-  app: /usr/bin/jpegtran
-  args:
-    optimize: ""
-    progressive: ""
-    copy: "none"
 uglify:
   app: /usr/bin/uglifyjs
   args:
