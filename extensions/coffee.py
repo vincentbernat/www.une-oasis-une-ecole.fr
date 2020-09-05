@@ -36,9 +36,9 @@ class CoffeePlugin(CLTransformer):
         try:
             self.logger.debug(
                 "Calling executable [%s] with arguments %s" %
-                    (args[0], unicode(args[1:])))
+                    (args[0], str(args[1:])))
             return subprocess.check_output(args)
-        except subprocess.CalledProcessError, error:
+        except subprocess.CalledProcessError as error:
             self.logger.error(traceback.format_exc())
             self.logger.error(error.output)
             raise
@@ -66,9 +66,10 @@ class CoffeePlugin(CLTransformer):
         coffee = self.app
         source = File.make_temp(text)
         target = File.make_temp('')
-        args = [unicode(coffee)]
-        args.extend(["-c", "-p", unicode(source)])
-        return self.call_app(args)
+        args = [str(coffee)]
+        args.extend(["-c", "-p", str(source)])
+        text = self.call_app(args)
+        return text.decode('utf-8')
 
 from hyde.ext.plugins.js import UglifyPlugin as OrigUglifyPlugin
 
