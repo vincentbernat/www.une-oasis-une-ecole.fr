@@ -9,6 +9,8 @@
 	 alt="{{ menu['name']|e }}">
     {% endfor %}
   </div>
+  <a class="oasis-dons"
+     href="https://www.helloasso.com/associations/une-oasis-une-ecole/collectes/le-jardin-d-enfants-d-atar">Dons</a>
   <div class="oasis-menu"><ul>
     {% for menu in resource.meta.menu %}
     {% set active=(content_url(current) == content_url(menu['page'])) %}
