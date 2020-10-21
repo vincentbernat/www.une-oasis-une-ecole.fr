@@ -1,15 +1,7 @@
 oasis = {}
 
-#
-# 1. Effects
-#
-oasis.effects = {}
-
 # 1.1 Images
-oasis.effects.images = (article) ->
-  # Is browser modern enough?
-  if typeof document.querySelectorAll != "function"
-    return
+oasis.images = (article) ->
   # Turn any article image into the appropriate class and randomize a bit the rotation
   nb = 0
   els = document.querySelectorAll("article p > img")
@@ -23,10 +15,7 @@ oasis.effects.images = (article) ->
     el.className += " oasis-image-alternate" if (nb++) % 2 != 0
 
 # 1.2 Menu
-oasis.effects.menu = ->
-  # Is browser modern enough?
-  if typeof document.querySelectorAll != "function"
-    return
+oasis.menu = ->
   # Handle menu by changing the image appropriately
   carousel = document.querySelector("nav .oasis-carousel")
   menu = document.querySelector("nav .oasis-menu")
@@ -53,5 +42,5 @@ oasis.effects.menu = ->
 #
 # Final: execute everything
 #
-oasis.effects.images()
-oasis.effects.menu()
+oasis.images()
+oasis.menu()
