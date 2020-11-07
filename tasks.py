@@ -59,19 +59,32 @@ def build(c):
     media = yaml.safe_load(open(conf))['media_url']
     c.run('hyde -x gen -c %s' % conf)
     with c.cd(".final"):
+        # Convert JPG to webp
+        c.run("find media/images -type f -name '*.jpg' -print"
+              " | xargs -n1 -P4 -i cwebp -quiet -q 84 -af '{}' -o '{}'.webp")
         # Optimize JPG
         jpegoptim = c.run("nix-build --no-out-link "
                           "  -E 'with (import <nixpkgs>{}); "
                           "        jpegoptim.override { libjpeg = mozjpeg; }'").stdout.strip()
         c.run("find media/images -type f -name '*.jpg' -print0"
-              "  | sort -z"
+              "  | sort -z "
               f" | xargs -0 -n10 -P4 {jpegoptim}/bin/jpegoptim --max=84 --all-progressive --strip-all")
         # Optimize PNG
         c.run("find media/images -type f -name '*.png' -print0"
-              " | sort -z"
+              " | sort -z "
               " | xargs -0 -n10 -P4 pngquant --skip-if-larger --strip "
               "                              --quiet --ext .png --force "
               "|| true")
+        # Convert PNG to webp
+        c.run("find media/images -type f -name '*.png' -print"
+              " | xargs -n1 -P4 -i cwebp -quiet -z 6 '{}' -o '{}'.webp")
+        # Remove WebP if size is greater than original file
+        c.run("for f in media/images/**/*.webp; do"
+              "  orig=$(stat --format %s ${f%.webp});"
+              "  webp=$(stat --format %s $f);"
+              "  (( $orig*0.90 > $webp )) || rm $f;"
+              "done", shell="/bin/zsh")
+
         for p in ['media/js/*.js',
                   'media/css/*.css']:
             sed_html = []
