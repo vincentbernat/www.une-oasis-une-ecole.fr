@@ -227,5 +227,5 @@ def analytics(c):
           "       --sort-panel=REFERRERS,BY_VISITORS,DESC "
           "       --sort-panel=REFERRING_SITES,BY_VISITORS,DESC "
           "       --sort-panel=STATUS_CODES,BY_VISITORS,DESC "
-          "".format(" ".join(hosts)))
+          "".format(" ".join(hosts)), hide=False)
     c.run("xdg-open goaccess.html")
