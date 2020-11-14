@@ -11,7 +11,7 @@ oasis.images = (article) ->
     # Rotation
     r = Math.random() + 1
     r = -r if Math.random() > 0.5
-    el.style.transform = el.style.webkitTransform = "rotate(#{r}deg)"
+    el.style.transform = "rotate(#{r}deg)"
     el.className += " oasis-image-alternate" if (nb++) % 2 != 0
 
 # 1.2 Menu
