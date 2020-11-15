@@ -14,33 +14,7 @@ oasis.images = (article) ->
     el.style.transform = "rotate(#{r}deg)"
     el.className += " oasis-image-alternate" if (nb++) % 2 != 0
 
-# 1.2 Menu
-oasis.menu = ->
-  # Handle menu by changing the image appropriately
-  carousel = document.querySelector("nav .oasis-carousel")
-  menu = document.querySelector("nav .oasis-menu")
-
-  toggle = (enter, nb) ->
-    for el, index in carousel.querySelectorAll("img")
-      if index == nb
-        if enter
-          el.classList.add 'selected'
-          el.classList.remove 'unselected'
-        else
-          el.classList.add 'unselected'
-          el.classList.remove 'selected'
-
-  for el in carousel.querySelectorAll("img")
-    el.classList.add "unselected"
-  carousel.querySelector("img").classList.add 'active'
-  for el, index in menu.querySelectorAll("li")
-    f = (index) ->
-      el.addEventListener("mouseenter", (event) -> toggle(true, index))
-      el.addEventListener("mouseleave", (event) -> toggle(false, index))
-    f(index)
-
 #
 # Final: execute everything
 #
 oasis.images()
-oasis.menu()

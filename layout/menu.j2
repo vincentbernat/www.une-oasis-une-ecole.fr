@@ -1,14 +1,6 @@
 {# -*- html -*- #}
 <nav>
   {% set current = (resource.url == "/index.html") and "/" or resource.url %}
-  <div class="oasis-carousel">
-    {% for menu in resource.meta.menu %}
-    {% set active=(content_url(current) == content_url(menu['page'])) %}
-    <img {% if active %} class="active"{% endif %}
-	 src="{{ media_url('images/b/' + menu['image']) }}"
-	 alt="{{ menu['name']|e }}">
-    {% endfor %}
-  </div>
   <a class="oasis-dons"
      href="https://www.helloasso.com/associations/une-oasis-une-ecole/collectes/le-jardin-d-enfants-d-atar">Dons</a>
   <div class="oasis-menu"><ul>
@@ -18,6 +10,8 @@
       <a href="{{ content_url(menu['page']) }}">
 	{{ menu['name']|e }}
       </a>
+      <img src="{{ media_url('images/b/' + menu['image']) }}"
+	   alt="{{ menu['name']|e }}">
     </li>
     {% endfor %}
   </ul></div>

@@ -2,49 +2,41 @@
 
 nav {
     position: relative;
-    ul,li {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-    }
-    /* Carousel */
-    img:first-child {
-	position: relative;
-    }
-    img.active, img.active.unselected, img.selected {
-	opacity: 1;
-    }
-    img.unselected {
-	opacity: 0;
-    }
-    img {
-	position: absolute;
-	vertical-align: bottom;
-	top: 0; left: 0;
-	max-width: 100%;
-	height: auto;
-	opacity: 0;
-	transition: opacity 0.5s ease-in-out;
-	z-index: 3;
-	interpolation-mode: bicubic;
-    }
-    img.active {
-	z-index: 2;
-    }
     /* Menu */
     div.oasis-menu {
+        position: relative;
+	top: 0; left: 0;
 	width: 100%;
-	background: rgba(255,255,255,0.6);
+        padding-top: 46%;
 	.font-size(1.625);
-	position: relative; z-index: 10;
-	margin-top: -1.56em;
-	padding: 0.3em 0;
+        ul,li {
+	    margin: 0;
+        }
 	ul {
 	    text-align: center;
+            background: rgba(255,255,255,0.6);
+            z-index: 10;
+            padding: .3em 0;
 	}
 	li {
-	    padding: 0 0.2em;
+	    padding: 0.5em 0.2em;
+	    list-style: none;
 	    display: inline;
+            img {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                max-width: 100%;
+                z-index: 4;
+            }
+            &.active img {
+                z-index: 5;
+            }
+            &:hover img {
+                z-index: 6;
+            }
 	}
     }
     a {
