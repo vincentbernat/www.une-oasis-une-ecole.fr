@@ -117,8 +117,7 @@ printf " JPG %10s %10s %10s\n" \
             """, hide='err')
 
         with step("compute hash for static files"):
-            for p in ['media/js/*.js',
-                      'media/css/*.css']:
+            for p in ['media/css/*.css']:
                 sed_html = []
                 sed_css = []
                 files = c.run("echo %s" % p, hide=True).stdout.strip().split(" ")

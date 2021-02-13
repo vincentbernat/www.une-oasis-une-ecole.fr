@@ -8,8 +8,8 @@ plugins:
   - extensions.combine.CombinePlugin
   - hyde.ext.plugins.auto_extend.AutoExtendPlugin
   - hyde.ext.plugins.less.LessCSSPlugin
+  - extensions.css.ImageCSSPlugin
   - extensions.css.CSSPrefixerPlugin
-  - extensions.coffee.CoffeePlugin
   - hyde.ext.plugins.textlinks.TextlinksPlugin
 context:
   data:
