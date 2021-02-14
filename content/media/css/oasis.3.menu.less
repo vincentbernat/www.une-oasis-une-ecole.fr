@@ -57,32 +57,7 @@ nav {
     }
 }
 
-.oasis-dons {
-    position: absolute;
-    top: 1em;
-    right: 2em;
-    z-index: 1000;
-    background-color: @theme-color;
-    border: 0.2em solid lighten(@theme-color, 60%);
-    border-radius: 1.75em;
-    box-shadow: 3px 3px 10px #333;
-    color: white !important;
-    font: bold 150% @font-regular;
-    padding: 0.4em 0.1em;
-    text-align: center;
-    line-height: 2.2em;
-    width: 3.1em;
-    height: 2.3em;
-    &:hover {
-        margin: 3px 0 0 3px;
-        box-shadow: 0 0 1px #333;
-    }
-    transition-property: margin, box-shadow;
-    transition-duration: 0.3s;
-    text-shadow: none;
-}
-
-@media only screen and (min-width: (@page-width+5em)) {
+@media only screen and (min-width: @page-width) {
     nav:before {
 	position: absolute;
 	display: block;
@@ -99,8 +74,5 @@ nav {
 	content: "Une oasis, \Aune école";
         white-space: pre;
 	z-index: 100;
-    }
-    .oasis-dons {
-        right: -1.7em;
     }
 }
