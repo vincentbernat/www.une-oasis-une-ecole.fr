@@ -7,7 +7,7 @@ fonttools==4.14.0
 fswrap==1.0.0
 hyde @ git+https://github.com/vincentbernat/hyde.git@vbe/master
 idna==2.10
-Jinja2==2.11.2
+Jinja2==2.11.3
 LinkChecker==9.4.0
 lxml==4.6.2
 marisa-trie==0.7.5
