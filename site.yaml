@@ -11,6 +11,7 @@ plugins:
   - extensions.css.ImageCSSPlugin
   - extensions.css.CSSPrefixerPlugin
   - hyde.ext.plugins.textlinks.TextlinksPlugin
+  - extensions.typo.TypographyPlugin
 context:
   data:
     base: http://www.une-oasis-une-ecole.fr
