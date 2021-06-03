@@ -6,7 +6,6 @@ add_header    "Referrer-Policy" "no-referrer-when-downgrade";
 add_header    "X-Content-Type-Options" "nosniff";
 
 location = /nginx.conf {
-  expires     max;
   return      404;
 }
 
