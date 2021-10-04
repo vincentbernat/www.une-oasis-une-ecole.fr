@@ -79,8 +79,9 @@ def build(c):
         with step("convert JPG to AVIF"):
             libavif = c.run("nix-build --no-out-link -E '(import <nixpkgs>{}).libavif'").stdout.strip()
             c.run("find media/images -type f -name '*.jpg' -print"
-                  f" | xargs -n1 -P4 -i {libavif}/bin/avifenc --codec aom --yuv 420 "
-                  "                                           --min 20 --max 25 '{}' '{}'.avif"
+                  f" | xargs -n1 -P$(nproc) -i {libavif}/bin/avifenc --codec aom --yuv 420 "
+                  "                                                  --ignore-icc "
+                  "                                                  --min 20 --max 25 '{}' '{}'.avif"
                   " > /dev/null")
         with step("optimize JPG"):
             jpegoptim = c.run("nix-build --no-out-link "
