@@ -9,7 +9,7 @@ import contextlib
 
 os.environ["PATH"] = os.path.expanduser('~/.virtualenvs/hyde/bin') \
     + os.pathsep + os.environ["PATH"]
-hosts = ["web03.luffy.cx", "web04.luffy.cx"]
+hosts = ["web03.luffy.cx", "web04.luffy.cx", "web05.luff.cx"]
 
 
 def confirm(question, default=False):
