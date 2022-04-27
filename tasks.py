@@ -77,16 +77,14 @@ def build(c):
             c.run("find media/images -type f -name '*.jpg' -print"
                   " | xargs -n1 -P4 -i cwebp -q 84 -af '{}' -o '{}'.webp")
         with step("convert JPG to AVIF"):
-            libavif = c.run("nix-build --no-out-link -E '(import <nixpkgs>{}).libavif'").stdout.strip()
+            libavif = c.run("nix build --no-link nixpkgs#libavif --json | jq -r '.[0].outputs.out'").stdout.strip()
             c.run("find media/images -type f -name '*.jpg' -print"
                   f" | xargs -n1 -P$(nproc) -i {libavif}/bin/avifenc --codec aom --yuv 420 "
                   "                                                  --ignore-icc "
                   "                                                  --min 20 --max 25 '{}' '{}'.avif"
                   " > /dev/null")
         with step("optimize JPG"):
-            jpegoptim = c.run("nix-build --no-out-link "
-                              "  -E 'with (import <nixpkgs>{}); "
-                              "        jpegoptim.override { libjpeg = mozjpeg; }'").stdout.strip()
+            jpegoptim = c.run("nix build --impure --no-link --expr 'with (builtins.getFlake \"nixpkgs\").legacyPackages.x86_64-linux; jpegoptim.override { libjpeg = mozjpeg; }' --json | jq -r '.[0].outputs.out'").stdout.strip()
             c.run("find media/images -type f -name '*.jpg' -print0"
                   "  | sort -z "
                   f" | xargs -0 -n10 -P4 {jpegoptim}/bin/jpegoptim --max=84 --all-progressive --strip-all")
