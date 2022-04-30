@@ -5,10 +5,15 @@ import os
 import sys
 import time
 import yaml
+import csv
+import re
+import datetime
 import contextlib
+import urllib
+import xml.etree.ElementTree as ET
 
-os.environ["PATH"] = os.path.expanduser('~/.virtualenvs/hyde/bin') \
-    + os.pathsep + os.environ["PATH"]
+conf = "site-production.yaml"
+media = yaml.safe_load(open(conf))['media_url']
 hosts = ["web03.luffy.cx", "web04.luffy.cx", "web05.luffy.cx", "web06.luffy.cx"]
 
 
@@ -38,11 +43,12 @@ def step(what):
     yellow = "\033[33;1m"
     reset = "\033[0m"
     now = time.time()
-    print(f"{blue}▶ {yellow}{what}{reset}", file=sys.stderr)
+    print(f"{blue}▶ {yellow}{what}{reset}...", file=sys.stderr)
     yield
     elapsed = int(time.time() - now)
     print(f"{blue}▶ {green}{what}{reset} ({elapsed}s)",
           file=sys.stderr)
+
 
 @task
 def gen(c):
@@ -63,45 +69,53 @@ def serve(c):
 
 
 @task
+def prune(c, before='1 year ago'):
+    """Prune old commits."""
+    with c.cd(".final"):
+        out = c.run(f"git log --before='{before}' --pretty=format:%H | head -1").stdout.strip()
+        assert(out != "")
+        c.run(f"echo {out} > .git/shallow")
+        c.run("git gc --prune=now")
+
+
+@task
 def build(c):
     """Build production content"""
-    c.run("[ $(git rev-parse --abbrev-ref HEAD) = latest ]")
+    c.run('git annex lock && [ -z "$(git status --porcelain)" ]')
     c.run("rm -rf .final/*")
-    conf = "site-production.yaml"
-    media = yaml.safe_load(open(conf))['media_url']
     with step("run Hyde"):
         c.run('hyde -x gen -c %s' % conf)
     with c.cd(".final"):
+        # Fix HTML (<source> is an empty tag)
+        with step("fix HTML"):
+            c.run(r"find . -name '*.html' -print0"
+                  r"| xargs -0 sed -i 's+\(<source[^>]*>\)</source>+\1+g'")
+            c.run(r"find . -name '*.html' -print0"
+                  r"| xargs -0 sed -i 's+\(<track[^>]*>\)</track>+\1+g'")
+
         # Image optimization
-        with step("convert JPG to WebP"):
-            c.run("find media/images -type f -name '*.jpg' -print"
-                  " | xargs -n1 -P4 -i cwebp -q 84 -af '{}' -o '{}'.webp")
-        with step("convert JPG to AVIF"):
-            libavif = c.run("nix build --no-link nixpkgs#libavif --json | jq -r '.[0].outputs.out'").stdout.strip()
-            c.run("find media/images -type f -name '*.jpg' -print"
-                  f" | xargs -n1 -P$(nproc) -i {libavif}/bin/avifenc --codec aom --yuv 420 "
-                  "                                                  --ignore-icc "
-                  "                                                  --min 20 --max 25 '{}' '{}'.avif"
-                  " > /dev/null")
-        with step("optimize JPG"):
-            jpegoptim = c.run("nix build --impure --no-link --expr 'with (builtins.getFlake \"nixpkgs\").legacyPackages.x86_64-linux; jpegoptim.override { libjpeg = mozjpeg; }' --json | jq -r '.[0].outputs.out'").stdout.strip()
-            c.run("find media/images -type f -name '*.jpg' -print0"
-                  "  | sort -z "
-                  f" | xargs -0 -n10 -P4 {jpegoptim}/bin/jpegoptim --max=84 --all-progressive --strip-all")
-        with step("optimize PNG"):
-            c.run("find media/images -type f -name '*.png' -print0"
-                  " | sort -z "
-                  " | xargs -0 -n10 -P4 pngquant --skip-if-larger --strip "
-                  "                              --quiet --ext .png --force "
-                  "|| true")
-        with step("convert PNG to WebP"):
-            c.run("find media/images -type f -name '*.png' -print"
-                  " | xargs -n1 -P4 -i cwebp -z 8 '{}' -o '{}'.webp")
+        with step("optimize images"):
+            c.run("cd .. ; NIX_PATH=target=$PWD/.final/media/images nix build --impure .#build.optimizeImages")
+            c.run("cp -r --no-preserve=mode ../result/* media/images/. && rm ../result")
+
+        # We want to prefer JPGs if their sizes are not too large.
+        # The idea is that:
+        #  - JPG decoding is fast
+        #  - JPG has progressive decoding
+        #
+        # We prefer smaller WebPs over AVIFs as all browsers
+        # supporting AVIF also support WebP.
         with step("remove WebP/AVIF files not small enough"):
             c.run("for f in media/images/**/*.{webp,avif}; do"
                   "  orig=$(stat --format %s ${f%.*});"
                   "  new=$(stat --format %s $f);"
                   "  (( $orig*0.90 > $new )) || rm $f;"
+                  "done", shell="/bin/zsh")
+            c.run("for f in media/images/**/*.avif; do"
+                  "  [[ -f ${f%.*}.webp ]] || continue;"
+                  "  orig=$(stat --format %s ${f%.*}.webp);"
+                  "  new=$(stat --format %s $f);"
+                  "  (( $orig > $new )) || rm $f;"
                   "done", shell="/bin/zsh")
             c.run(r"""
 printf "     %10s %10s %10s\n" Original WebP AVIF
@@ -115,6 +129,7 @@ printf " JPG %10s %10s %10s\n" \
    $(find media/images -name '*.jpg.avif' | wc -l)
             """, hide='err')
 
+        # Compute hash on various files
         with step("compute hash for static files"):
             for p in ['media/css/*.css']:
                 sed_html = []
@@ -134,7 +149,7 @@ printf " JPG %10s %10s %10s\n" \
                     # Remove deploy/media
                     f = f[len('media/'):]
                     newname = newname[len('media/'):]
-                    if ext in [".png", ".svg", ".woff", ".woff2"]:
+                    if ext in [".png", ".svg", ".ttf", ".woff", ".woff2"]:
                         # Fix CSS
                         sed_css.append('s+{})+{})+g'.format(f, newname))
                     if ext not in [".png", ".svg"]:
@@ -158,6 +173,9 @@ printf " JPG %10s %10s %10s\n" \
         c.run(r"find * -type f -print0 | xargs -r0 chmod a+r")
         c.run(r"find * -type d -print0 | xargs -r0 chmod a+rx")
 
+        # Delete unwanted files
+        c.run("find . -type f -name '.*' -delete")
+
         c.run("git add *")
         c.run("git diff --stat HEAD || true", pty=True, hide=False)
         if confirm("More diff?", default=True):
@@ -172,7 +190,7 @@ printf " JPG %10s %10s %10s\n" \
 
 
 @task
-def push(c):
+def push(c, clean=False):
     """Push built site to production"""
     with step("push to GitHub"):
         c.run("git push github")
@@ -198,32 +216,21 @@ done''')
             c.run("rsync --exclude=.git --exclude=media "
                   "--delete-delay --copy-unsafe-links -rt "
                   ".final/ {}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
+            c.run("ssh {} sudo systemctl reload nginx".format(host))
 
-
-@task
-def analytics(c):
-    """Get some stats"""
-    c.run("for h in {};"
-          "do ssh $h zcat -f /var/log/nginx/vincent.bernat.ch.log\\*"
-          "   | grep -v atom.xml;"
-          "done"
-          " | LANG=en_US.utf8 goaccess "
-          "       --ignore-crawlers "
-          "       --http-protocol=no "
-          "       --no-term-resolver "
-          "       --no-ip-validation "
-          "       --output=goaccess.html "
-          "       --log-format=COMBINED "
-          "       --ignore-panel=KEYPHRASES "
-          "       --ignore-panel=REQUESTS_STATIC "
-          "       --ignore-panel=GEO_LOCATION "
-          "       --sort-panel=REQUESTS,BY_VISITORS,DESC "
-          "       --sort-panel=NOT_FOUND,BY_VISITORS,DESC "
-          "       --sort-panel=HOSTS,BY_VISITORS,DESC "
-          "       --sort-panel=OS,BY_VISITORS,DESC "
-          "       --sort-panel=BROWSERS,BY_VISITORS,DESC "
-          "       --sort-panel=REFERRERS,BY_VISITORS,DESC "
-          "       --sort-panel=REFERRING_SITES,BY_VISITORS,DESC "
-          "       --sort-panel=STATUS_CODES,BY_VISITORS,DESC "
-          "".format(" ".join(hosts)), hide=False)
-    c.run("xdg-open goaccess.html")
+    for host in hosts:
+        with step(f"clean images on {host}"):
+            c.run("rsync --exclude=.git --copy-unsafe-links -rt "
+                  "--delete-delay "
+                  "--include='**/' "
+                  "--include='*.avif' --include='*.webp' "
+                  "--exclude='*' "
+                  ".final/media/images "
+                  "{}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
+    if clean:
+        for host in hosts:
+            with step(f"clean files on {host}"):
+                c.run("rsync --exclude=.git --copy-unsafe-links -rt "
+                      "--delete-delay --exclude=videos/\\*/ "
+                      ".final/media/ "
+                      "{}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
