@@ -30,3 +30,20 @@ location ~ ^(?<canonical>.*)\.(?:html|php)$ {
   http2_push $canonical;
   return 301 $canonical;
 }
+
+{% for res in resource.node.walk_resources() %}
+{# handle exceptions #}
+{% if res.meta.nolog or res.meta.mime %}
+location = {{ content_url(res.url) }} {
+{% if res.meta.nolog %}
+  access_log off;
+  log_not_found off;
+{% endif %}
+{% if res.meta.mime %}
+  types { }
+  default_type {{ res.meta.mime }};
+{% endif %}
+  try_files $uri.html $uri $uri/index.html;
+}
+{% endif %}
+{% endfor %}
