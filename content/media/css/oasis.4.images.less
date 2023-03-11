@@ -4,12 +4,11 @@ article {
   /* Images */
   img {
     max-width: 100%;
+    box-sizing: border-box;
     height: auto;
     background-color: white;
     padding: 1em;
     vertical-align: bottom;
-    float: left;
-    margin: 1em;
     display: block;
   }
   .oasis-image {
@@ -21,11 +20,6 @@ article {
     @media only print {
       box-shadow: none;
       border: 1px solid black;
-    }
-
-    & img {
-      float: none;
-      margin: 0;
     }
 
     &:after {
@@ -51,9 +45,6 @@ article {
 
 @media only screen and (max-width: @more-width) {
   article {
-    img {
-      float: none;
-    }
     .oasis-image,
     .oasis-image-alternate {
       float: left;

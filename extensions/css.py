@@ -64,6 +64,8 @@ class ImageCSSPlugin(Plugin):
         nb = 0
         for img in images:
             el = img.parent()
+            if el.hasClass("oasis-image-big"):
+                continue
             el.addClass("oasis-image")
             # Rotate
             random.setstate(self._random_state)
