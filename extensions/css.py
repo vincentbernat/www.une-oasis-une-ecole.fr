@@ -64,7 +64,7 @@ class ImageCSSPlugin(Plugin):
         nb = 0
         for img in images:
             el = img.parent()
-            if el.hasClass("oasis-image-big"):
+            if el.hasClass("oasis-image-center"):
                 continue
             el.addClass("oasis-image")
             # Rotate
