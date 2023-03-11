@@ -1,85 +1,86 @@
 /* -*- css -*- */
 
 article {
-    /* Images */
-    img {
-	max-width: 100%;
-	height: auto;
-	background-color: white;
-	padding: 1em;
-	vertical-align: bottom;
-	float: left;
-	margin: 1em;
-	display: block;
-    }
-    .oasis-image {
-	box-shadow: -8px 10px 18px 1px #222;
-	margin: 1em 3em 1em -6em;
-	float: left;
-	max-width: 100%;
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 1em;
+    vertical-align: bottom;
+    float: left;
+    margin: 1em;
+    display: block;
+  }
+  .oasis-image {
+    box-shadow: -8px 10px 18px 1px #222;
+    margin: 1em 3em 1em -6em;
+    float: left;
+    max-width: 100%;
 
-	@media only print {
-	    box-shadow: none;
-	    border: 1px solid black;
-	}
-
-	& img {
-	    float: none;
-	    margin: 0;
-	}
-
-	&:after {
-	    @media only screen {
-		display: block;
-		content: "";
-		position: absolute;
-		width: 30%;
-		height: 30px;
-		top: -21px;
-		left: 35%;
-		background: rgba(254, 254, 254, .6);
-		box-shadow: 0px 0 3px rgba(0,0,0,0.1);
-	    }
-	}
+    @media only print {
+      box-shadow: none;
+      border: 1px solid black;
     }
-    .oasis-image-alternate {
-	box-shadow: 10px 10px 18px 1px #222;
-	margin: 1em -6em 1em 3em;
-	float: right;
+
+    & img {
+      float: none;
+      margin: 0;
     }
+
+    &:after {
+      @media only screen {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 30%;
+        height: 30px;
+        top: -21px;
+        left: 35%;
+        background: rgba(254, 254, 254, 0.6);
+        box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  .oasis-image-alternate {
+    box-shadow: 10px 10px 18px 1px #222;
+    margin: 1em -6em 1em 3em;
+    float: right;
+  }
 }
 
 @media only screen and (max-width: @more-width) {
-    article {
-	img {
-	    float: none;
-	}
-	.oasis-image, .oasis-image-alternate {
-	    float: left;
-	    margin: 1em 2em 1em 0;
-	    &:after {
-		display: none;
-	    }
-	}
+  article {
+    img {
+      float: none;
     }
+    .oasis-image,
+    .oasis-image-alternate {
+      float: left;
+      margin: 1em 2em 1em 0;
+      &:after {
+        display: none;
+      }
+    }
+  }
 }
 @media only screen and (min-width: @more-width) {
-    article {
-	.oasis-image {
-	    margin: 1em 3em 1em -((@more-width - @page-width)/2 + 2em);
-	    &:after {
-		transform: rotate(30deg);
-		top: -5px;
-		left: 80%;
-	    }
-	}
-	.oasis-image-alternate {
-	    margin: 1em -((@more-width - @page-width)/2 + 2em) 1em 3em;
-	    &:after {
-		transform: rotate(-30deg);
-		top: -10px;
-		left: -7%;
-	    }
-	}
+  article {
+    .oasis-image {
+      margin: 1em 3em 1em -((@more-width - @page-width)/2 + 2em);
+      &:after {
+        transform: rotate(30deg);
+        top: -5px;
+        left: 80%;
+      }
     }
+    .oasis-image-alternate {
+      margin: 1em -((@more-width - @page-width)/2 + 2em) 1em 3em;
+      &:after {
+        transform: rotate(-30deg);
+        top: -10px;
+        left: -7%;
+      }
+    }
+  }
 }

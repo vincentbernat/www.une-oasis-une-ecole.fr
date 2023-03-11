@@ -1,45 +1,45 @@
 /* -*- css -*- */
 
 html {
-    background: #E7BD93 url('../images/l/sable.jpg') repeat;
-    height: 100%;
-    overflow-x: hidden;
+  background: #e7bd93 url("../images/l/sable.jpg") repeat;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-    margin: 0 auto;
-    width: @page-width;
-    min-height: 100%;
+  margin: 0 auto;
+  width: @page-width;
+  min-height: 100%;
 }
 .oasis-sheet {
-    background: rgba(255,255,255,0.7);
-    background: linear-gradient(top,
-				rgba(255,255,255,0.8),
-				rgba(255,255,255,0.7));
-    @media only screen {
-        box-shadow: 0 0 50px 5px black;
-    }
+  background: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(
+    top,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.7)
+  );
+  @media only screen {
+    box-shadow: 0 0 50px 5px black;
+  }
 }
 
 footer {
-    margin: 1em;
-    text-align: right;
-    color: transparent;
-    text-shadow: rgba(0,0,0,0.2) -1px 0,
-	         rgba(0,0,0,0.4) 0 -1px,
-	         rgba(231,189,147,0.9) 0 1px,
-	         rgba(0,0,0,0.4) -1px -2px;
-    a {
-	color: rgba(40, 40, 40, 0.4);
-	text-decoration: none;
-	font-style: italic;
-    }
+  margin: 1em;
+  text-align: right;
+  color: transparent;
+  text-shadow: rgba(0, 0, 0, 0.2) -1px 0, rgba(0, 0, 0, 0.4) 0 -1px,
+    rgba(231, 189, 147, 0.9) 0 1px, rgba(0, 0, 0, 0.4) -1px -2px;
+  a {
+    color: rgba(40, 40, 40, 0.4);
+    text-decoration: none;
+    font-style: italic;
+  }
 }
 
 @media only screen and (max-width: @page-width) {
-    body {
-	margin: 0;
-	border: 0;
-	width: 100%;
-    }
+  body {
+    margin: 0;
+    border: 0;
+    width: 100%;
+  }
 }

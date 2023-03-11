@@ -1,78 +1,79 @@
 /* -*- css -*- */
 
 nav {
+  position: relative;
+  /* Menu */
+  div.oasis-menu {
     position: relative;
-    /* Menu */
-    div.oasis-menu {
-        position: relative;
-	top: 0; left: 0;
-	width: 100%;
-        padding-top: 46%;
-	.font-size(1.625);
-        ul,li {
-	    margin: 0;
-        }
-	ul {
-	    text-align: center;
-            background: rgba(255,255,255,0.6);
-            z-index: 10;
-            padding: .3em 0;
-	}
-	li {
-	    padding: 0.5em 0.2em;
-	    list-style: none;
-	    display: inline;
-            img {
-                position: absolute;
-                top: 0;
-                right: 0;
-                left: 0;
-                max-width: 100%;
-                height: auto;
-                z-index: 4;
-            }
-            &.active img {
-                z-index: 5;
-            }
-            &:hover img {
-                z-index: 6;
-            }
-	}
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 46%;
+    .font-size(1.625);
+    ul,
+    li {
+      margin: 0;
     }
-    a {
-	font-family: @font-headings;
-	text-decoration: none;
-	&:visited {
-	    color: @theme-color;
-	}
-	transition: all 0.2s ease-in-out;
+    ul {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 10;
+      padding: 0.3em 0;
     }
-    a {
-	text-shadow: white 0 1px 2px, white 1px 1px 1px;
-	color: @theme-color;
+    li {
+      padding: 0.5em 0.2em;
+      list-style: none;
+      display: inline;
+      img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        max-width: 100%;
+        height: auto;
+        z-index: 4;
+      }
+      &.active img {
+        z-index: 5;
+      }
+      &:hover img {
+        z-index: 6;
+      }
     }
-    li.active a, li:hover a {
-	text-shadow: @theme-color 0 0 6px, white 1px 1px 1px;
-	color: darken(@theme-color, 5%);
+  }
+  a {
+    font-family: @font-headings;
+    text-decoration: none;
+    &:visited {
+      color: @theme-color;
     }
+    transition: all 0.2s ease-in-out;
+  }
+  a {
+    text-shadow: white 0 1px 2px, white 1px 1px 1px;
+    color: @theme-color;
+  }
+  li.active a,
+  li:hover a {
+    text-shadow: @theme-color 0 0 6px, white 1px 1px 1px;
+    color: darken(@theme-color, 5%);
+  }
 }
 
 @media only screen and (min-width: @page-width) {
-    nav:before {
-	position: absolute;
-	display: block;
-	top: 0;
-	left: 0.2em;
-	font-family: @font-headings;
-	font-weight: bold;
-	.font-size(4);
-	color: transparent;
-	text-shadow: rgba(0,0,0,0.1) -1px 0,
-	             rgba(0,0,0,0.2) 0 -1px,
-	             rgba(247,127,7,0.9) 0 1px,
-	             rgba(0,0,0,0.2) -1px -2px;
-	content: "Une oasis, \Aune école";
-        white-space: pre;
-	z-index: 100;
-    }
+  nav:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0.2em;
+    font-family: @font-headings;
+    font-weight: bold;
+    .font-size(4);
+    color: transparent;
+    text-shadow: rgba(0, 0, 0, 0.1) -1px 0, rgba(0, 0, 0, 0.2) 0 -1px,
+      rgba(247, 127, 7, 0.9) 0 1px, rgba(0, 0, 0, 0.2) -1px -2px;
+    content: "Une oasis, \Aune école";
+    white-space: pre;
+    z-index: 100;
+  }
 }

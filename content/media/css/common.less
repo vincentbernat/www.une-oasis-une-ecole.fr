@@ -1,11 +1,11 @@
 /* -*- css -*- */
 
 .clearfix () {
-    &:after {
-        content: "";
-        display: table;
-	clear: both;
-    }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 @font-unicode: 'Lucida Grande','Lucida Sans Unicode','Arial Unicode MS';
@@ -18,6 +18,6 @@
 @theme-color: #B80F28;
 
 .font-size (@factor: 1) {
-    font-size: @factor * 1em;
-    line-height: round(ceil(@factor/@line-height)*@line-height/@factor, 3);
+  font-size: @factor * 1em;
+  line-height: round(ceil(@factor / @line-height) * @line-height / @factor, 3);
 }
