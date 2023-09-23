@@ -6,14 +6,25 @@
   outputs = { self, flake-utils, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
+        l = pkgs.lib // builtins;
         pkgs = inputs.nixpkgs.legacyPackages."${system}";
         pythonEnv = pkgs.poetry2nix.mkPoetryEnv {
           projectDir = ./.;
-          overrides = pkgs.poetry2nix.overrides.withDefaults (self: super: {
-            pytest = super.pytest.overridePythonAttrs (
-              old: { doCheck = false; doInstallCheck = false; }
-            );
-          });
+          overrides = pkgs.poetry2nix.overrides.withDefaults (self: super:
+            (l.listToAttrs (l.map
+              # Many dependencies do not declare explicitely their build tools
+              (x: {
+                name = x;
+                value = super."${x}".overridePythonAttrs (old: {
+                  nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ self.setuptools self.flit-core ];
+                });
+              })
+              [
+                "commando"
+                "fswrap"
+                "hyde"
+              ]))
+          );
         };
         nodeEnv = pkgs.mkYarnModules {
           pname = "www-yarn-modules";
