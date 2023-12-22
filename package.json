@@ -5,6 +5,7 @@
   "dependencies": {
     "autoprefixer": "~10.4.4",
     "cssnano": "~5.1.4",
+    "less": "~4.2.0",
     "postcss": "~8.4.31"
   }
 }

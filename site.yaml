@@ -50,7 +50,7 @@ meta:
        page: "contact.html"
        image: "guide.jpg"
 less:
-  app: /usr/bin/lessc
+  app: node_modules/.bin/lessc
 markdown:
   extensions:
     - extra
