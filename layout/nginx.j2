@@ -21,13 +21,11 @@ location {{content_url('/404.html')}} {
 location ~ ^(?<canonical>.+)/(?:index\.html|index\.php)?$ {
   access_log off;
   log_not_found off;
-  http2_push $canonical;
   return 301 $canonical;
 }
 location ~ ^(?<canonical>.*)\.(?:html|php)$ {
   access_log off;
   log_not_found off;
-  http2_push $canonical;
   return 301 $canonical;
 }
 
