@@ -16,6 +16,7 @@
         poetry2nix = inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; };
         pythonEnv = poetry2nix.mkPoetryEnv {
           projectDir = ./.;
+          python = pkgs.python311;
           overrides = poetry2nix.overrides.withDefaults (self: super:
             (l.listToAttrs (l.map
               # Many dependencies do not declare explicitely their build tools
