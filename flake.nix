@@ -123,13 +123,16 @@
         };
         devShell = pythonEnv.env.overrideAttrs (oldAttrs: {
           name = "www";
-          buildInputs = [
+          buildInputs = with pkgs; [
             # Build
-            pkgs.git
-            pkgs.git-annex
-            pkgs.nodejs
-            pkgs.openssl
-            pkgs.python3Packages.invoke
+            git
+            git-annex
+            nodejs
+            openssl
+
+            # Build support
+            yarn
+            poetry
           ];
           shellHook = ''
             ln -nsf ${nodeEnv}/node_modules node_modules
