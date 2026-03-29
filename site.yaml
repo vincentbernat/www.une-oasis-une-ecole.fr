@@ -41,14 +41,6 @@ meta:
        name: "Perspectives"
        page: "perspectives.html"
        image: "dunes.jpg"
-    -
-       name: "Manifestations"
-       page: "manifestation.html"
-       image: "enfants.jpg"
-    -
-       name: "Contacts"
-       page: "contact.html"
-       image: "guide.jpg"
 less:
   app: node_modules/.bin/lessc
 markdown:
