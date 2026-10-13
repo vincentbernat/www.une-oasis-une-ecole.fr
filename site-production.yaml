@@ -1,6 +1,6 @@
 extends: "site.yaml"
 mode: production
-media_url: //d3g644l4515ldw.cloudfront.net/
+media_url: //media-une-oasis-une-ecole-fr.b-cdn.net/
 deploy_root: '.final'
 plugins:
   - hyde.ext.plugins.meta.MetaPlugin
