@@ -8,6 +8,9 @@ add_header    "X-Content-Type-Options" "nosniff";
 location = /nginx.conf {
   return      404;
 }
+location = /Caddyfile {
+  return      404;
+}
 
 location / {
   try_files $uri.html $uri $uri/index.html =404;

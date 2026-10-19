@@ -1,0 +1,37 @@
+header {
+  ?Cache-Control max-age=21600
+  X-Content-Type-Options nosniff
+}
+
+@config path /nginx.conf /Caddyfile
+error @config 404
+@internal path /404 /404.html
+error @internal 404
+
+{# redirections #}
+@index path_regexp index ^(.+)/(?:index\.html|index\.php)?$
+log_skip @index
+redir @index {re.index.1} 301
+@extension path_regexp extension ^(.*)\.(?:html|php)$
+log_skip @extension
+redir @extension {re.extension.1} 301
+
+try_files {path}.html {path} {path}/index.html
+
+handle_errors 404 {
+  rewrite * {{content_url('/404.html')}}
+  try_files {path}.html {path}
+  file_server {
+    status 404
+  }
+}
+
+{% for res in resource.node.walk_resources() %}
+{# handle exceptions #}
+{% if res.meta.nolog %}
+log_skip {{ content_url(res.url) }}
+{% endif %}
+{% if res.meta.mime %}
+header {{ content_url(res.url) }} Content-Type {{ res.meta.mime }}
+{% endif %}
+{% endfor %}
