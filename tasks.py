@@ -36,7 +36,10 @@ invoke.runners.bytes_to_read = bytes_to_read
 
 conf = "site-production.yaml"
 media = yaml.safe_load(open(conf))['media_url']
-hosts = ["web02.luffy.cx", "web03.luffy.cx", "web04.luffy.cx", "web05.luffy.cx", "web06.luffy.cx"]
+hosts = {
+    "www": os.environ["EXPORT_www"].split(),
+    "media": os.environ["EXPORT_media"].split(),
+}
 
 
 def confirm(question, default=False):
@@ -227,20 +230,20 @@ for f in $(git ls-tree -r -t --full-name --name-only HEAD); do
 done''')
 
     # media
-    for host in hosts:
+    for host in hosts["media"]:
         with step(f"push media to {host}"):
             c.run("rsync --exclude=.git --copy-unsafe-links -rt "
                   ".final/media/ {}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
 
     # HTML
-    for host in hosts:
+    for host in hosts["www"]:
         with step(f"push HTML to {host}"):
             c.run("rsync --exclude=.git --exclude=media "
                   "--delete-delay --copy-unsafe-links -rt "
                   ".final/ {}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
             c.run("ssh {} sudo systemctl reload caddy".format(host))
 
-    for host in hosts:
+    for host in hosts["media"]:
         with step(f"clean images on {host}"):
             c.run("rsync --exclude=.git --copy-unsafe-links -rt "
                   "--delete-delay "
@@ -250,7 +253,7 @@ done''')
                   ".final/media/images "
                   "{}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
     if clean:
-        for host in hosts:
+        for host in hosts["media"]:
             with step(f"clean files on {host}"):
                 c.run("rsync --exclude=.git --copy-unsafe-links -rt "
                       "--delete-delay --exclude=videos/\\*/ "
