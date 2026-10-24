@@ -238,7 +238,7 @@ done''')
             c.run("rsync --exclude=.git --exclude=media "
                   "--delete-delay --copy-unsafe-links -rt "
                   ".final/ {}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
-            c.run("ssh {} sudo systemctl reload nginx".format(host))
+            c.run("ssh {} sudo systemctl reload caddy".format(host))
 
     for host in hosts:
         with step(f"clean images on {host}"):
