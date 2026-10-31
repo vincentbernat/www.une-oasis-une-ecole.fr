@@ -136,9 +136,9 @@
           ];
           shellHook = ''
             export EXPORT_www=$(< ../automation/nixops-take1/cdktf.json \
-              jq -r '.sites.value["www.une-oasis-une-ecole.fr"] | join(" ")')
+              jq -r '.sites.value["www.lueurs-espoir.fr"] | join(" ")')
             export EXPORT_media=$(< ../automation/nixops-take1/cdktf.json \
-              jq -r '.sites.value["media.une-oasis-une-ecole.fr"] | join(" ")')
+              jq -r '.sites.value["media.lueurs-espoir.fr"] | join(" ")')
             ln -nsf ${nodeEnv}/node_modules node_modules
           '';
         });

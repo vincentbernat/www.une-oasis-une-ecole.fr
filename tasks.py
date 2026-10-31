@@ -233,14 +233,14 @@ done''')
     for host in hosts["media"]:
         with step(f"push media to {host}"):
             c.run("rsync --exclude=.git --copy-unsafe-links -rt "
-                  ".final/media/ {}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
+                  ".final/media/ {}:/data/webserver/media.lueurs-espoir.fr/".format(host))
 
     # HTML
     for host in hosts["www"]:
         with step(f"push HTML to {host}"):
             c.run("rsync --exclude=.git --exclude=media "
                   "--delete-delay --copy-unsafe-links -rt "
-                  ".final/ {}:/data/webserver/www.une-oasis-une-ecole.fr/".format(host))
+                  ".final/ {}:/data/webserver/www.lueurs-espoir.fr/".format(host))
             c.run("ssh {} sudo systemctl reload caddy".format(host))
 
     for host in hosts["media"]:
@@ -251,11 +251,11 @@ done''')
                   "--include='*.avif' --include='*.webp' "
                   "--exclude='*' "
                   ".final/media/images "
-                  "{}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
+                  "{}:/data/webserver/media.lueurs-espoir.fr/".format(host))
     if clean:
         for host in hosts["media"]:
             with step(f"clean files on {host}"):
                 c.run("rsync --exclude=.git --copy-unsafe-links -rt "
                       "--delete-delay --exclude=videos/\\*/ "
                       ".final/media/ "
-                      "{}:/data/webserver/media.une-oasis-une-ecole.fr/".format(host))
+                      "{}:/data/webserver/media.lueurs-espoir.fr/".format(host))

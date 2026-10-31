@@ -1,6 +1,6 @@
 extends: "site.yaml"
 mode: production
-media_url: //media-une-oasis-une-ecole-fr.b-cdn.net/
+media_url: //media.lueurs-espoir.fr/
 deploy_root: '.final'
 plugins:
   - hyde.ext.plugins.meta.MetaPlugin

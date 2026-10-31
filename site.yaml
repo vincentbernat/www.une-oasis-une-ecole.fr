@@ -14,7 +14,7 @@ plugins:
   - extensions.typo.TypographyPlugin
 context:
   data:
-    base: http://www.une-oasis-une-ecole.fr
+    base: http://www.lueurs-espoir.fr
 meta:
   nodemeta: meta.yaml
   extends: base.j2

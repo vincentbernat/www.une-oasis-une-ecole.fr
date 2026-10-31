@@ -1,7 +1,6 @@
-www.une-oasis-une-ecole.fr
-==========================
+# www.lueurs-espoir.fr
 
-See the result at <http://www.une-oasis-une-ecole.fr>. This site is
+See the result at <http://www.lueurs-espoir.fr>. This site is
 made with [Hyde][hyde], a static website generator written in Python.
 
 Feel free to look at how things are done. The content (all HTML and

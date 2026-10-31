@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "une-oasis-une-ecole.fr"
+name = "lueurs-espoir.fr"
 version = "0.0.0"
 description = "Une oasis, une école's website"
 authors = ["Vincent Bernat <vincent@bernat.ch>"]
