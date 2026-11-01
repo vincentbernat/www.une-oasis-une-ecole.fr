@@ -1,6 +1,6 @@
 extends: "site.yaml"
 mode: production
-media_url: //media.lueurs-espoir.fr/
+media_url: //media-lueurs-espoir-fr.b-cdn.net/
 deploy_root: '.final'
 plugins:
   - hyde.ext.plugins.meta.MetaPlugin
