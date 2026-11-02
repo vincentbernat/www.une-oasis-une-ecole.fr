@@ -31,7 +31,7 @@ meta:
     -
        name: "Projet"
        page: "projet.html"
-       image: "ecole.jpg"
+       image: "enfants.jpg"
     -
        name: "Réalisations"
        page: "realisations.html"
