@@ -1,0 +1,23 @@
+/* -*- css -*- */
+
+aside.oasis-banner {
+  background: @theme-color;
+  color: white;
+  border-top: 3px solid darken(@theme-color, 10%);
+  border-bottom: 3px solid darken(@theme-color, 10%);
+  padding: 0.6em 1em;
+  text-align: center;
+  .font-size(1.125);
+  p {
+    margin: 0;
+    text-wrap: balance;
+  }
+  a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    &:hover {
+      color: lighten(@theme-color, 50%);
+    }
+  }
+}

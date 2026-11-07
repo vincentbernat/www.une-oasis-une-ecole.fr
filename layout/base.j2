@@ -21,6 +21,13 @@
   <div class="oasis-sheet">
   {% include "menu.j2" %}
 
+    <aside class="oasis-banner">
+      {% filter markdown|typogrify -%}
+        En 2026, les activités d'*Une oasis, une école* ont été transférées
+        à l'association [*Les Lueurs de l'Espoir*](https://www.lueurs-espoir.fr/). 👋
+      {%- endfilter %}
+    </aside>
+
   <article>
 {% if resource.meta.title %}
     <header>
